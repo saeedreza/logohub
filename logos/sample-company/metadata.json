@@ -1,0 +1,23 @@
+{
+  "name": "Sample Company",
+  "website": "https://samplecompany.com",
+  "industry": ["technology", "software"],
+  "colors": {
+    "primary": "#0066cc",
+    "secondary": "#ff9900"
+  },
+  "guidelines": "https://samplecompany.com/brand",
+  "lastUpdated": "2025-05-15",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-15",
+      "description": "Initial version"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects",
+    "attribution": "Required when used in publications"
+  }
+} 

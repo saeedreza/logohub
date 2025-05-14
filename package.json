@@ -1,0 +1,34 @@
+{
+  "name": "logohub",
+  "version": "0.1.0",
+  "description": "An open-source brand logo repository service for front-end developers",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "logo",
+    "brand",
+    "svg",
+    "open-source",
+    "repository"
+  ],
+  "author": "LogoHub Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/logohub.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "svgo": "^3.0.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "nodemon": "^3.0.1"
+  }
+} 
