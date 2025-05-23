@@ -76,6 +76,12 @@ module.exports = async (req, res) => {
         page,
         limit,
         logos: [],
+        capabilities: {
+          formats: ['svg', 'png', 'webp'],
+          dynamicConversion: true,
+          colorCustomization: true,
+          standardSizes: [16, 32, 64, 128, 256, 512]
+        },
         message: 'LogoHub API is running! Add logos to the /logos directory to see them here.'
       });
     }
@@ -120,14 +126,11 @@ module.exports = async (req, res) => {
               return versionParts.join('-');
             });
           
-          // Get available formats
-          const formats = [...new Set(files
-            .filter(f => !f.endsWith('metadata.json'))
-            .map(f => f.split('.').pop())
-          )];
+          // Available formats - SVG from files, PNG/WebP via conversion
+          const availableFormats = ['svg', 'png', 'webp'];
           
           // Apply format filter if specified
-          if (format && !formats.includes(format)) {
+          if (format && !availableFormats.includes(format)) {
             return null;
           }
           
@@ -135,7 +138,11 @@ module.exports = async (req, res) => {
             id: company,
             name: metadata.name,
             versions: [...new Set(versions)],
-            formats,
+            formats: availableFormats,
+            capabilities: {
+              colorCustomization: !!metadata.colors?.primary,
+              dynamicSizing: true
+            },
             url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${company}`
           };
         } catch (err) {
@@ -157,7 +164,13 @@ module.exports = async (req, res) => {
       total: filteredLogos.length,
       page,
       limit,
-      logos: paginatedLogos
+      logos: paginatedLogos,
+      capabilities: {
+        formats: ['svg', 'png', 'webp'],
+        dynamicConversion: true,
+        colorCustomization: true,
+        standardSizes: [16, 32, 64, 128, 256, 512]
+      }
     };
     
     // Add helpful message if no logos found
@@ -165,6 +178,7 @@ module.exports = async (req, res) => {
       response.message = 'No logos found. Add logos to the /logos directory to get started!';
     }
     
+    res.setHeader('Cache-Control', 'public, max-age=300'); // Cache for 5 minutes
     res.json(response);
   } catch (err) {
     console.error('Error fetching logos:', err);

@@ -25,7 +25,8 @@
     "express": "^4.18.2",
     "svgo": "^3.0.2",
     "cors": "^2.8.5",
-    "helmet": "^7.0.0"
+    "helmet": "^7.0.0",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "jest": "^29.5.0",
