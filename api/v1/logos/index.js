@@ -61,36 +61,111 @@ module.exports = async (req, res) => {
     const industry = req.query.industry;
     const format = req.query.format;
     
-    // Sample data for testing - will be replaced with actual file system access later
-    const sampleLogos = [
-      {
-        id: 'vercel',
-        name: 'Vercel',
-        versions: ['standard', 'monochrome'],
-        formats: ['svg', 'png'],
-        url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/vercel`
-      },
-      {
-        id: 'nextjs',
-        name: 'Next.js',
-        versions: ['standard', 'monochrome'],
-        formats: ['svg', 'png'],
-        url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/nextjs`
-      }
-    ];
+    // Get the absolute path to the logos directory
+    const logosPath = path.join(process.cwd(), 'logos');
+    
+    let companies;
+    try {
+      companies = await fs.readdir(logosPath);
+      // Filter out non-directory entries and hidden files
+      companies = companies.filter(name => !name.startsWith('.'));
+    } catch (err) {
+      // Logos directory doesn't exist yet - return empty result
+      return res.json({
+        total: 0,
+        page,
+        limit,
+        logos: [],
+        message: 'LogoHub API is running! Add logos to the /logos directory to see them here.'
+      });
+    }
+    
+    // Filter and format results
+    const logos = await Promise.all(
+      companies.map(async (company) => {
+        try {
+          const companyPath = path.join(logosPath, company);
+          const stat = await fs.stat(companyPath);
+          
+          // Skip if not a directory
+          if (!stat.isDirectory()) {
+            return null;
+          }
+          
+          const metadataPath = path.join(companyPath, 'metadata.json');
+          let metadata;
+          
+          try {
+            metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
+          } catch (err) {
+            // Skip companies without proper metadata
+            console.warn(`No metadata found for ${company}`);
+            return null;
+          }
+          
+          // Apply industry filter if specified
+          if (industry && !metadata.industry.includes(industry)) {
+            return null;
+          }
+          
+          // Get available versions and formats
+          const files = await fs.readdir(companyPath);
+          const versions = files
+            .filter(f => f.endsWith('.svg') && !f.endsWith('metadata.json'))
+            .map(f => {
+              const parts = f.split('.');
+              const versionParts = parts[0].split('-');
+              // Remove company name prefix to get version
+              versionParts.shift();
+              return versionParts.join('-');
+            });
+          
+          // Get available formats
+          const formats = [...new Set(files
+            .filter(f => !f.endsWith('metadata.json'))
+            .map(f => f.split('.').pop())
+          )];
+          
+          // Apply format filter if specified
+          if (format && !formats.includes(format)) {
+            return null;
+          }
+          
+          return {
+            id: company,
+            name: metadata.name,
+            versions: [...new Set(versions)],
+            formats,
+            url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${company}`
+          };
+        } catch (err) {
+          console.error(`Error processing ${company}:`, err);
+          return null;
+        }
+      })
+    );
+    
+    // Remove null entries (filtered out)
+    const filteredLogos = logos.filter(Boolean);
     
     // Apply pagination
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    const paginatedLogos = sampleLogos.slice(startIndex, endIndex);
+    const paginatedLogos = filteredLogos.slice(startIndex, endIndex);
     
-    res.json({
-      total: sampleLogos.length,
+    const response = {
+      total: filteredLogos.length,
       page,
       limit,
-      logos: paginatedLogos,
-      message: 'Sample data - API is working! Deployment protection needs to be disabled in Vercel dashboard.'
-    });
+      logos: paginatedLogos
+    };
+    
+    // Add helpful message if no logos found
+    if (filteredLogos.length === 0) {
+      response.message = 'No logos found. Add logos to the /logos directory to get started!';
+    }
+    
+    res.json(response);
   } catch (err) {
     console.error('Error fetching logos:', err);
     res.status(500).json({ error: 'Internal server error' });
