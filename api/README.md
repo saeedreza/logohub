@@ -1,146 +1,58 @@
-# LogoHub API Documentation
+# API
 
-This document describes the API for accessing and manipulating logos in the LogoHub repository.
+Simple Express.js API for serving logos with dynamic conversion and customization.
 
-## Base URL
+## Files
 
+### `index.js`
+Main server entry point. Handles logo serving with format conversion (SVG→PNG/WebP), color customization, and dynamic sizing.
+
+### `health.js`
+Health check endpoint. Returns API status and version.
+
+### `utils/analytics.js`
+Analytics utility for tracking API usage, logo views, downloads, searches, and errors.
+
+### `v1/logos/index.js`
+Lists all logos with pagination, filtering, and search. Includes rate limiting.
+
+### `v1/logos/[id].js`
+Individual logo endpoint. Returns metadata or files with dynamic conversion and color customization.
+
+## Usage
+
+```bash
+npm start
 ```
-https://api.logohub.dev/v1
-```
 
-## Authentication
-
-API requests require authentication using an API key:
-
-```
-Authorization: Bearer YOUR_API_KEY
-```
+API runs on `http://localhost:3000`
 
 ## Endpoints
 
-### Get All Logos
-
+### Health Check
 ```
-GET /logos
-```
-
-Parameters:
-- `page`: Page number for pagination (default: 1)
-- `limit`: Number of results per page (default: 20, max: 100)
-- `industry`: Filter by industry
-- `format`: Filter by format (svg, png, webp)
-
-Response:
-```json
-{
-  "total": 100,
-  "page": 1,
-  "limit": 20,
-  "logos": [
-    {
-      "id": "sample-company",
-      "name": "Sample Company",
-      "versions": ["standard", "monochrome"],
-      "formats": ["svg", "png"],
-      "url": "https://api.logohub.dev/v1/logos/sample-company"
-    },
-    // more logos...
-  ]
-}
+GET /api/health
 ```
 
-### Get Logo by ID
-
+### List Logos
 ```
-GET /logos/:id
-```
-
-Response:
-```json
-{
-  "id": "sample-company",
-  "name": "Sample Company",
-  "website": "https://samplecompany.com",
-  "industry": ["technology", "software"],
-  "colors": {
-    "primary": "#0066cc",
-    "secondary": "#ff9900"
-  },
-  "versions": [
-    {
-      "name": "standard",
-      "formats": [
-        {
-          "format": "svg",
-          "url": "https://api.logohub.dev/v1/logos/sample-company/standard.svg"
-        },
-        {
-          "format": "png",
-          "sizes": [
-            {
-              "width": 16,
-              "height": 16,
-              "url": "https://api.logohub.dev/v1/logos/sample-company/standard-16x16.png"
-            },
-            // more sizes...
-          ]
-        }
-      ]
-    },
-    {
-      "name": "monochrome",
-      "formats": [
-        {
-          "format": "svg",
-          "url": "https://api.logohub.dev/v1/logos/sample-company/monochrome.svg"
-        },
-        // more formats...
-      ]
-    }
-  ]
-}
+GET /api/v1/logos
+GET /api/v1/logos?page=2&limit=50
+GET /api/v1/logos?search=google&industry=technology
+GET /api/v1/logos?format=svg
 ```
 
-### Get Logo File
-
+### Logo Metadata
 ```
-GET /logos/:id/:version.:format
-```
-
-Parameters:
-- `size`: Required for PNG format (e.g., 16x16, 32x32, 64x64)
-- `color`: Override color (hex format without #, e.g., FF0000 for red)
-
-Example:
-```
-GET /logos/sample-company/standard.svg?color=FF0000
+GET /api/v1/logos/google
+GET /api/v1/logos/microsoft
 ```
 
-Returns the logo file with the specified parameters.
-
-## Error Responses
-
-All errors return a JSON object with an error message:
-
-```json
-{
-  "error": "Error message here"
-}
+### Logo Files
 ```
-
-Common HTTP status codes:
-- `400`: Bad Request - Invalid parameters
-- `401`: Unauthorized - Missing or invalid API key
-- `404`: Not Found - Logo not found
-- `429`: Too Many Requests - Rate limit exceeded
-- `500`: Internal Server Error - Something went wrong on our end
-
-## Rate Limits
-
-Free tier: 100 requests per hour
-Premium tier: 1,000 requests per hour
-
-Rate limit headers are included in all responses:
-- `X-RateLimit-Limit`: Total number of requests allowed per hour
-- `X-RateLimit-Remaining`: Number of requests remaining in the current window
-- `X-RateLimit-Reset`: Time when the current rate limit window resets (Unix timestamp) 
+GET /api/v1/logos/google?file=google.svg
+GET /api/v1/logos/google?file=google.png&size=64
+GET /api/v1/logos/google?file=google.webp&size=256
+GET /api/v1/logos/google?file=google.svg&color=ff0000
+GET /api/v1/logos/microsoft?file=microsoft.png&size=128&color=000000
+``` 

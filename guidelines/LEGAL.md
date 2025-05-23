@@ -1,4 +1,4 @@
-# Legal Considerations for LogoHub
+# Legal Guidelines for LogoHub
 
 This document outlines the legal aspects of storing, distributing, and using brand logos in the LogoHub repository.
 

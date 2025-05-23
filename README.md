@@ -321,7 +321,7 @@ We welcome contributions! Use our organized toolchain for the best experience:
 4. **Test locally** with `npm start` and `npm run website:dev`
 5. **Submit Pull Request**
 
-See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) for detailed standards.
+See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) and [Legal Guidelines](./guidelines/LEGAL.md) for detailed standards.
 
 ## 📊 Roadmap
 
@@ -352,7 +352,7 @@ See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) for detailed sta
 - [ ] Premium features and authentication
 - [ ] Enterprise logo management dashboard
 
-See [implementation-steps.md](./roadmap/implementation-steps.md) for detailed roadmap.
+See [ROADMAP.md](./roadmap/ROADMAP.md) for detailed roadmap.
 
 ## 📄 License
 
