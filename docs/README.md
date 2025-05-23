@@ -1,6 +1,6 @@
 # LogoHub Documentation
 
-🚀 **Live Documentation Site**: https://saeedreza.github.io/logohub/
+🚀 **Live Documentation Site**: https://logohub.dev/
 
 ## Quick Links
 
@@ -28,4 +28,4 @@ curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ff
 
 ---
 
-**Visit the full documentation at**: https://saeedreza.github.io/logohub/ 
+**Visit the full documentation at**: https://logohub.dev/ 

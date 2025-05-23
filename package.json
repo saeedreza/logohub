@@ -4,9 +4,12 @@
   "description": "An open-source brand logo repository service for front-end developers",
   "main": "api/index.js",
   "scripts": {
-    "start": "node api/index.js",
-    "dev": "nodemon api/index.js",
-    "test": "jest"
+    "start": "node api/health.js",
+    "test": "jest",
+    "logo:create": "node tools/logo-template.js",
+    "logo:validate": "node tools/logo-validator.js",
+    "logo:optimize": "npx svgo",
+    "validate:all": "node -e \"const {readdirSync} = require('fs'); const {LogoValidator} = require('./tools/logo-validator'); const logos = readdirSync('./logos').filter(d => d !== '.DS_Store'); console.log('Validating all logos...'); Promise.all(logos.map(async logo => { const validator = new LogoValidator(); const result = await validator.validateLogo(logo); return {logo, success: result.success}; })).then(results => { const failed = results.filter(r => !r.success); console.log(`\\n📊 Results: ${results.length - failed.length}/${results.length} passed`); if (failed.length > 0) { console.log('❌ Failed:', failed.map(f => f.logo).join(', ')); process.exit(1); } else { console.log('🎉 All logos validated successfully!'); } });\""
   },
   "keywords": [
     "logo",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "jsdom": "^23.0.0"
   }
 } 

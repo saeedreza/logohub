@@ -5,6 +5,7 @@ const {
   convertSvgBufferToWebp, 
   isValidSize,
   parseSizeFromFilename,
+  replaceColorsInSvg,
   STANDARD_SIZES 
 } = require('../../../tools/image-converter');
 
@@ -95,9 +96,8 @@ async function handleMetadata(req, res, id, logoPath) {
           png: {
             sizes: STANDARD_SIZES.map(size => ({
               size,
-              width: size,
-              height: size,
-              url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}-${size}x${size}.png`
+              maxDimension: size,
+              url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}-${size}.png`
             })),
             // Also provide size-flexible URL
             dynamic: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}.png&size={size}`
@@ -105,9 +105,8 @@ async function handleMetadata(req, res, id, logoPath) {
           webp: {
             sizes: STANDARD_SIZES.map(size => ({
               size,
-              width: size,
-              height: size,
-              url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}-${size}x${size}.webp`
+              maxDimension: size,
+              url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}-${size}.webp`
             })),
             // Also provide size-flexible URL
             dynamic: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${id}?file=${versionName}.webp&size={size}`
@@ -172,16 +171,16 @@ async function handleFile(req, res, id, logoPath, file, color, size) {
         const metadataPath = path.join(logoPath, 'metadata.json');
         try {
           const metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
-          const primaryColor = metadata.colors?.primary;
           
-          if (primaryColor) {
-            // Replace primary color with requested color (ensure # prefix)
-            const targetColor = color.startsWith('#') ? color : `#${color}`;
-            svgContent = svgContent.replace(
-              new RegExp(primaryColor.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
-              targetColor
-            );
-          }
+          // Use improved color replacement
+          const targetColor = color.startsWith('#') ? color : `#${color}`;
+          
+          // Check if this is a request for monochrome (e.g., color=000000 or color=black)
+          const isMonochrome = color.toLowerCase() === 'black' || 
+                             color.toLowerCase() === 'white' ||
+                             color === '000000' || color === 'ffffff';
+          
+          svgContent = replaceColorsInSvg(svgContent, targetColor, isMonochrome);
         } catch (metaErr) {
           console.warn(`Could not read metadata for color replacement: ${metaErr.message}`);
         }
@@ -213,6 +212,32 @@ async function handleFile(req, res, id, logoPath, file, color, size) {
           svgBuffer = await fs.readFile(svgPath);
         } catch (err2) {
           return res.status(404).json({ error: 'SVG file not found for conversion' });
+        }
+      }
+      
+      // Handle color replacement if requested
+      if (color) {
+        const metadataPath = path.join(logoPath, 'metadata.json');
+        try {
+          const metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
+          
+          // Convert buffer to string for color replacement
+          let svgContent = svgBuffer.toString('utf8');
+          
+          // Use improved color replacement
+          const targetColor = color.startsWith('#') ? color : `#${color}`;
+          
+          // Check if this is a request for monochrome
+          const isMonochrome = color.toLowerCase() === 'black' || 
+                             color.toLowerCase() === 'white' ||
+                             color === '000000' || color === 'ffffff';
+          
+          svgContent = replaceColorsInSvg(svgContent, targetColor, isMonochrome);
+          
+          // Convert back to buffer
+          svgBuffer = Buffer.from(svgContent, 'utf8');
+        } catch (metaErr) {
+          console.warn(`Could not read metadata for color replacement: ${metaErr.message}`);
         }
       }
       

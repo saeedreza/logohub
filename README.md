@@ -226,7 +226,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Links
 
 - **API Base**: https://logohub.dev/api/v1
-- **Documentation**: https://saeedreza.github.io/logohub/
+- **Documentation**: https://logohub.dev/
 - **GitHub Repository**: https://github.com/saeedreza/logohub
 - **Issues & Feature Requests**: https://github.com/saeedreza/logohub/issues
 

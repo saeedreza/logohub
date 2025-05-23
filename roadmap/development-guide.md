@@ -2,230 +2,357 @@
 
 This guide provides detailed information for developers who want to contribute to or build upon the LogoHub project.
 
-## Getting Started
+> **Current Status**: LogoHub is in **Phase 1** of development. See [implementation-steps.md](./implementation-steps.md) for the full roadmap.
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
 - Git
+- Vercel CLI (for deployment)
 
-### Installation
+### Installation & Setup
 
 1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/logohub.git
+   ```bash
+   git clone https://github.com/saeedreza/logohub.git
    cd logohub
    ```
 
 2. Install dependencies:
-   ```
+   ```bash
    npm install
    ```
 
-3. Start the development server:
+3. Test the API locally using Vercel CLI:
+   ```bash
+   # Install Vercel CLI globally
+   npm install -g vercel
+
+   # Run locally (simulates Vercel environment)
+   vercel dev
    ```
-   npm run dev
+
+4. Access the local API:
+   ```
+   http://localhost:3000/api/v1/logos
+   http://localhost:3000/api/health
    ```
 
-## Project Structure
+## 📁 Current Project Structure
 
-- `/logos`: Contains all brand logos organized by company name
-- `/api`: API implementation for accessing logos
-- `/tools`: Utility scripts for logo manipulation
-- `/guidelines`: Documentation on contribution standards
-- `/doc`: Project documentation and guides
-- `/packages`: Framework-specific packages (React, Vue, etc.)
+```
+logohub/
+├── api/                           # Vercel serverless functions
+│   ├── health.js                 # ✅ Health check endpoint
+│   └── v1/
+│       └── logos/
+│           ├── index.js          # ✅ Logo listing API (/api/v1/logos)
+│           └── [id].js           # ✅ Individual logo API (/api/v1/logos/{id})
+├── logos/                        # ✅ Logo repository
+│   └── {company-id}/
+│       ├── metadata.json         # Company information
+│       └── *.svg                # Logo variants
+├── tools/                        # ✅ Conversion utilities
+│   └── image-converter.js        # Sharp-based SVG→PNG/WebP conversion
+├── docs/                         # ✅ GitHub Pages documentation site
+│   ├── index.html               # Live at https://logohub.dev
+│   └── README.md
+├── roadmap/                      # 📋 Planning documents
+│   ├── implementation-steps.md   # Development phases & roadmap
+│   ├── development-guide.md      # This file
+│   ├── reference-models.md       # Lucide inspiration
+│   └── legal-considerations.md   # Usage guidelines
+├── guidelines/                   # 📝 Contribution standards
+├── vercel.json                   # ✅ Vercel deployment configuration
+└── package.json                  # ✅ Dependencies & scripts
+```
 
-## Working with Logos
+### What's NOT Implemented Yet
 
-### Adding a New Logo
+- `/packages` directory (future framework-specific packages)
+- Main `api/index.js` entry point (using serverless functions instead)
+- Authentication system (planned for Phase 2)
+- Framework components (React, Vue, etc. - planned)
 
-1. Create a new directory under `/logos` with the company name:
-   ```
+## 🔧 Current Features (Phase 1)
+
+### ✅ Working API Endpoints
+
+| Endpoint | Status | Description |
+|----------|--------|-------------|
+| `GET /api/v1/logos` | ✅ Live | List all logos with pagination/filtering |
+| `GET /api/v1/logos/{id}` | ✅ Live | Get logo metadata and format options |
+| `GET /api/v1/logos/{id}?file={name}.{format}` | ✅ Live | Get logo file with customization |
+| `GET /api/health` | ✅ Live | API health check |
+
+### ✅ Working Features
+
+- **Dynamic Format Conversion**: SVG → PNG/WebP using Sharp
+- **Color Customization**: Real-time SVG color replacement
+- **Flexible Sizing**: 1-2048px for raster formats
+- **Rate Limiting**: Basic IP-based rate limiting
+- **CORS Support**: Enabled for browser applications
+- **Caching**: Aggressive caching headers for performance
+
+### ✅ Live Documentation
+
+- **Main Site**: https://logohub.dev
+- **API Base**: https://logohub.dev/api/v1
+
+## 🏗️ Development Workflows
+
+### Adding New Logos
+
+1. **Create Company Directory**:
+   ```bash
    mkdir -p logos/company-name
    ```
 
-2. Create the metadata.json file with company information:
+2. **Add Metadata** (`logos/company-name/metadata.json`):
    ```json
    {
      "name": "Company Name",
      "website": "https://company-website.com",
-     "industry": ["category1", "category2"],
+     "industry": ["technology", "software"],
      "colors": {
-       "primary": "#hexcode",
-       "secondary": "#hexcode"
+       "primary": "#0066cc",
+       "secondary": "#ff9900"
      },
      "guidelines": "https://link-to-brand-guidelines.com",
-     "lastUpdated": "YYYY-MM-DD",
+     "lastUpdated": "2024-01-15",
      "contributor": "Your Name",
      "versions": [
        {
          "version": "1.0",
-         "date": "YYYY-MM-DD",
+         "date": "2024-01-15",
          "description": "Initial version"
        }
      ]
    }
    ```
 
-3. Add the logo SVG files following the naming convention:
+3. **Add SVG Files** (naming convention):
    ```
-   company-name-standard.svg
-   company-name-monochrome.svg
-   company-name-symbol.svg (if applicable)
+   company-name-standard.svg     # Main logo
+   company-name-monochrome.svg   # Single color version
+   company-name-symbol.svg       # Icon/symbol only (optional)
    ```
 
-4. Optimize SVG files using SVGO:
-   ```
+4. **Optimize SVGs**:
+   ```bash
    npx svgo logos/company-name/*.svg
    ```
 
-### Customizing Logos
+5. **Test Locally**:
+   ```bash
+   vercel dev
+   # Test: http://localhost:3000/api/v1/logos/company-name
+   ```
 
-Use the SVG color replacement tool to modify logo colors:
+### API Development
 
-```
-node tools/svg-color-replacer.js input.svg output.svg "#oldColor" "#newColor"
-```
+#### Current Architecture: Vercel Serverless Functions
 
-## API Development
+The API uses Vercel's serverless function model instead of a traditional Express server:
 
-### API Endpoints
+- Each endpoint is a separate file in `/api`
+- Functions are automatically deployed and scaled
+- No central server setup required
 
-The API follows RESTful design principles:
+#### Adding New Endpoints
 
-- `GET /v1/logos`: Get all logos with pagination and filtering
-- `GET /v1/logos/:id`: Get a specific logo's metadata and variants
-- `GET /v1/logos/:id/:version.:format`: Get a specific logo file
+1. **Create Function File**:
+   ```javascript
+   // api/v1/new-endpoint.js
+   module.exports = async (req, res) => {
+     // Enable CORS
+     res.setHeader('Access-Control-Allow-Origin', '*');
+     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+     
+     if (req.method === 'OPTIONS') {
+       res.status(200).end();
+       return;
+     }
+     
+     // Your logic here
+     res.json({ message: 'Hello from new endpoint' });
+   };
+   ```
 
-### API Authentication
+2. **Test Locally**:
+   ```bash
+   vercel dev
+   # Access: http://localhost:3000/api/v1/new-endpoint
+   ```
 
-(To be implemented) The API uses API keys for authentication:
+#### Working with the Image Converter
 
-```
-Authorization: Bearer YOUR_API_KEY
-```
+```javascript
+const { 
+  convertSvgBufferToPng, 
+  convertSvgBufferToWebp, 
+  isValidSize 
+} = require('../../tools/image-converter');
 
-### Adding New Endpoints
+// Convert SVG buffer to PNG
+const pngBuffer = await convertSvgBufferToPng(svgBuffer, 64);
 
-To add a new endpoint:
-
-1. Open `api/index.js`
-2. Add a new route handler following the existing patterns
-3. Ensure proper error handling and validation
-4. Update the API documentation in `api/README.md`
-
-## Framework-Specific Packages
-
-LogoHub follows a multi-package architecture (similar to Lucide) with specific integrations for popular frameworks:
-
-### Package Structure
-
-- `packages/logohub-core`: Core functionality and utilities
-- `packages/logohub-react`: React components
-- `packages/logohub-vue`: Vue components
-- `packages/logohub-svelte`: Svelte components
-- `packages/logohub-angular`: Angular components
-
-### Developing Packages
-
-Each package should:
-
-1. Provide a consistent API across frameworks
-2. Support customization options (color, size, etc.)
-3. Include TypeScript typings
-4. Be tree-shakable (only import used logos)
-5. Have comprehensive documentation
-
-## Deployment
-
-### Development
-
-```
-npm run dev
+// Convert SVG buffer to WebP
+const webpBuffer = await convertSvgBufferToWebp(svgBuffer, 128);
 ```
 
-### Vercel Deployment
+## 🚀 Deployment
 
-LogoHub uses Vercel for hosting the API and documentation site.
+### Current Deployment: Vercel
 
-#### Setting Up Vercel
+The project is configured for automatic deployment on Vercel:
 
-1. Install Vercel CLI:
-   ```
-   npm install -g vercel
-   ```
+1. **Automatic Deployment**: Pushes to `main` branch deploy automatically
+2. **Preview Deployments**: PRs get preview URLs
+3. **Environment Variables**: Configure in Vercel dashboard
 
-2. Login to Vercel:
-   ```
-   vercel login
-   ```
+### Manual Deployment
 
-3. Deploy for development:
-   ```
-   vercel
-   ```
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
-4. Deploy to production:
-   ```
-   vercel --prod
-   ```
+# Login to Vercel
+vercel login
 
-#### Environment Variables
+# Deploy to preview
+vercel
 
-Important environment variables to configure in Vercel:
+# Deploy to production
+vercel --prod
+```
 
-- `NODE_ENV`: Set to "production" for production deployments
-- `API_KEY_SECRET`: Secret for API key generation
-- `ALLOWED_ORIGINS`: CORS allowed origins
-
-#### Vercel Configuration
-
-Create a `vercel.json` file in the root directory:
+### Current Vercel Configuration
 
 ```json
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
-      "src": "/v1/(.*)",
-      "dest": "/api/index.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/docs/index.html"
+    },
+    {
+      "src": "/(?!api).*",
+      "dest": "/docs/index.html"
     }
   ]
 }
 ```
 
-## Testing
+## 🧪 Testing
 
-Run tests using Jest:
+### API Testing
 
+```bash
+# Test logo listing
+curl "https://logohub.dev/api/v1/logos"
+
+# Test specific logo
+curl "https://logohub.dev/api/v1/logos/sample-company"
+
+# Test file conversion
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.png&size=64"
+
+# Test color customization
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
 ```
+
+### Local Testing
+
+```bash
+# Start local development server
+vercel dev
+
+# Test locally
+curl "http://localhost:3000/api/v1/logos"
+```
+
+### Future: Automated Testing
+
+```bash
+# Will be added in future phases
 npm test
 ```
 
-### Writing Tests
+## 🔮 Future Development (Roadmap)
 
-1. Create test files with the `.test.js` extension
-2. Place them in the appropriate directory
-3. Follow the Jest testing conventions
+### Phase 2: Advanced Features (Planned)
 
-## Contributing
+- **Authentication System**: API key management
+- **Framework Packages**: React, Vue, Svelte components
+- **Advanced Documentation**: Interactive logo browser
+- **Caching Layer**: Redis/CDN optimization
+- **Monitoring**: Analytics and error tracking
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### Phase 3: Community Features (Planned)
 
-See the [CONTRIBUTING.md](../guidelines/CONTRIBUTING.md) file for detailed information on contributing logos.
+- **Company Management**: Logo claim/update process
+- **Contribution Portal**: Web-based logo submission
+- **API Management**: Rate limiting tiers
+- **Governance**: Community guidelines and moderation
 
-## License
+See [implementation-steps.md](./implementation-steps.md) for detailed roadmap.
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+## 🤝 Contributing
+
+### Current Contribution Process
+
+1. **Fork the repository**
+2. **Add logos** following the metadata schema above
+3. **Test locally** with `vercel dev`
+4. **Submit Pull Request** with clear description
+5. **Wait for review** and address feedback
+
+### Code Standards
+
+- **ESLint**: Will be added in future (currently manual)
+- **Prettier**: Will be added in future (currently manual)
+- **Testing**: Will be added in future phases
+
+### Logo Submission Guidelines
+
+See [../guidelines/CONTRIBUTING.md](../guidelines/CONTRIBUTING.md) for detailed logo submission standards.
+
+### Legal Considerations
+
+Review [legal-considerations.md](./legal-considerations.md) before submitting logos.
+
+## 📚 Reference Models
+
+This project follows patterns from [Lucide Icons](https://lucide.dev/). See [reference-models.md](./reference-models.md) for detailed comparison and inspiration.
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+1. **"Logo not found" errors**: Check file naming conventions
+2. **CORS issues**: Verify headers in serverless functions
+3. **Image conversion fails**: Check Sharp dependencies
+4. **Local dev not working**: Ensure Vercel CLI is installed
+
+### Getting Help
+
+- **GitHub Issues**: Report bugs and feature requests
+- **Discussions**: Ask questions and share ideas
+- **Discord**: (Future) Community chat
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+**Current Version**: 0.1.0 - Phase 1 Implementation 

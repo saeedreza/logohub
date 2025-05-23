@@ -1,0 +1,28 @@
+{
+  "name": "Google",
+  "website": "https://google.com",
+  "industry": [
+    "technology",
+    "search",
+    "advertising",
+    "cloud"
+  ],
+  "colors": {
+    "primary": "#4285F4",
+    "secondary": "#34A853"
+  },
+  "guidelines": "https://about.google/brand-resource-center/",
+  "lastUpdated": "2025-01-19",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-01-19",
+      "description": "Initial version with standard and monochrome variants"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Google's brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}
