@@ -47,8 +47,8 @@ export default {
     },
 
     footer: {
-      message: 'Released under the MIT License. UI inspired by <a href="https://lucide.dev">Lucide</a>.',
-      copyright: 'Copyright © 2024 LogoHub Contributors'
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2025 LogoHub Contributors'
     }
   },
 

@@ -177,9 +177,23 @@ import { ref, computed } from 'vue'
 import logoData from '../data/logos.json'
 
 // API Configuration
-const isDev = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-const API_BASE = isDev ? 'http://localhost:3000/api/v1' : 'https://logohub.dev/api/v1'
-const CDN_BASE = isDev ? 'http://localhost:3000' : 'https://logohub.dev'
+// Environment-based URL configuration
+const getBaseUrls = () => {
+  if (typeof window === 'undefined') return { API_BASE: 'https://logohub.dev/api/v1', CDN_BASE: 'https://logohub.dev' }
+  
+  const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  const API_BASE = isDev 
+    ? import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/v1'
+    : import.meta.env.VITE_PROD_API_BASE_URL || 'https://logohub.dev/api/v1'
+  
+  const CDN_BASE = isDev 
+    ? import.meta.env.VITE_CDN_BASE_URL || 'http://localhost:3000'
+    : import.meta.env.VITE_PROD_CDN_BASE_URL || 'https://logohub.dev'
+    
+  return { API_BASE, CDN_BASE }
+}
+
+const { API_BASE, CDN_BASE } = getBaseUrls()
 
 const data = ref(logoData)
 const viewMode = ref('grid')

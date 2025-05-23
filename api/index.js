@@ -21,7 +21,16 @@ const sharp = require('sharp');              // Image processing library
 const fs = require('fs').promises;
 
 const app = express();
+
+// Environment configuration
 const PORT = process.env.PORT || 3000;
+const MAX_IMAGE_SIZE = parseInt(process.env.MAX_IMAGE_SIZE) || 2048;
+const CACHE_MAX_AGE = process.env.CACHE_MAX_AGE || '31536000';
+const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
+
+// URL configuration based on environment
+const API_BASE_URL = process.env.API_BASE_URL || `http://localhost:${PORT}`;
+const WEBSITE_BASE_URL = process.env.WEBSITE_BASE_URL || 'http://localhost:5173';
 
 // === SECURITY & MIDDLEWARE CONFIGURATION ===
 
@@ -41,7 +50,9 @@ app.use(helmet({
 }));
 
 // Enable CORS for all routes (public API)
-app.use(cors());
+app.use(cors({
+  origin: CORS_ORIGIN
+}));
 
 // JSON parsing middleware for request bodies
 app.use(express.json());
@@ -65,10 +76,29 @@ app.options('*', (req, res) => {
 app.get('/api/health', require('./health'));
 
 // V1 API Routes - Logo listing and discovery
-app.get('/api/v1/logos', require('./v1/logos/index'));
+app.get('/api/v1/logos', require('./logos'));
 
-// V1 Individual logo endpoint with advanced file handling
-app.get('/api/v1/logos/:id', require('./v1/logos/[id]'));
+// V1 Individual logo endpoint
+app.get('/api/v1/logos/:id', require('./logo'));
+
+// V1 Logo metadata endpoint
+app.get('/api/v1/logos/:id/metadata', async (req, res) => {
+  // Set CORS headers for cross-origin access
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  try {
+    const { id } = req.params;
+    const metadataPath = path.join(process.cwd(), 'logos', id, 'metadata.json');
+    
+    // Read and return logo metadata
+    const metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
+    res.json(metadata);
+  } catch (error) {
+    res.status(404).json({ error: 'Logo metadata not found' });
+  }
+});
 
 /**
  * Legacy Individual Logo Endpoint (Fallback)
@@ -79,7 +109,7 @@ app.get('/api/v1/logos/:id', require('./v1/logos/[id]'));
  * 
  * URL: GET /api/v1/logos/:logoId/legacy
  * Query Parameters:
- * - size: Target size for raster formats (1-2048 pixels)
+ * - size: Target size for raster formats (1-${MAX_IMAGE_SIZE} pixels)
  * - format: Output format (svg, png, webp) - defaults to svg
  * - color: Color override (hex format without #, e.g., "ff0000")
  */
@@ -130,11 +160,14 @@ app.get('/api/v1/logos/:logoId/legacy', async (req, res) => {
         const buffer = Buffer.from(svgContent);
         let image = sharp(buffer);
         
-        // Apply sizing if requested
+        // Apply sizing if requested (maintain aspect ratio)
         if (size) {
           const sizeInt = parseInt(size);
-          if (sizeInt > 0 && sizeInt <= 2048) { // Size validation for safety
-            image = image.resize(sizeInt, sizeInt);
+          if (sizeInt > 0 && sizeInt <= MAX_IMAGE_SIZE) { // Size validation for safety
+            image = image.resize(sizeInt, sizeInt, {
+              fit: 'inside',
+              withoutEnlargement: false
+            });
           }
         }
         
@@ -169,7 +202,13 @@ app.get('/api/v1/logos/:logoId/legacy', async (req, res) => {
             let image = sharp(buffer);
             
             if (size) {
-              image = image.resize(parseInt(size), parseInt(size));
+              const sizeInt = parseInt(size);
+              if (sizeInt > 0 && sizeInt <= MAX_IMAGE_SIZE) {
+                image = image.resize(sizeInt, sizeInt, {
+                  fit: 'inside',
+                  withoutEnlargement: false
+                });
+              }
             }
             
             if (format === 'png') {
@@ -212,11 +251,14 @@ app.get('/api/v1/logos/:logoId/legacy', async (req, res) => {
     const buffer = Buffer.from(svgContent);
     let image = sharp(buffer);
     
-    // Apply sizing if requested
+    // Apply sizing if requested (maintain aspect ratio)
     if (size) {
       const sizeInt = parseInt(size);
-      if (sizeInt > 0 && sizeInt <= 2048) { // Validate size limits
-        image = image.resize(sizeInt, sizeInt);
+      if (sizeInt > 0 && sizeInt <= MAX_IMAGE_SIZE) { // Validate size limits
+        image = image.resize(sizeInt, sizeInt, {
+          fit: 'inside',
+          withoutEnlargement: false
+        });
       }
     }
     
@@ -239,31 +281,7 @@ app.get('/api/v1/logos/:logoId/legacy', async (req, res) => {
   }
 });
 
-/**
- * Logo Metadata Endpoint
- * 
- * Returns structured metadata for a specific logo without serving the actual file.
- * Useful for applications that need logo information before deciding which format to request.
- * 
- * URL: GET /api/v1/logos/:logoId/metadata
- */
-app.get('/api/v1/logos/:logoId/metadata', async (req, res) => {
-  // Set CORS headers for cross-origin access
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
-  try {
-    const { logoId } = req.params;
-    const metadataPath = path.join(process.cwd(), 'logos', logoId, 'metadata.json');
-    
-    // Read and return logo metadata
-    const metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
-    res.json(metadata);
-  } catch (error) {
-    res.status(404).json({ error: 'Logo metadata not found' });
-  }
-});
+
 
 // === STATIC FILE SERVING ===
 
@@ -292,13 +310,15 @@ app.use((err, req, res, next) => {
 
 /**
  * Start the Express server and log startup information
- * Provides useful URLs for development and monitoring
+ * Only runs in local development - Vercel handles this in production
  */
-app.listen(PORT, () => {
-  console.log(`🚀 LogoHub API running on http://localhost:${PORT}`);
-  console.log(`📖 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`🔍 API docs: http://localhost:${PORT}/api/v1/logos`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 LogoHub API running on ${API_BASE_URL}`);
+    console.log(`📖 Health check: ${API_BASE_URL}/api/health`);
+    console.log(`🔍 API docs: ${API_BASE_URL}/api/v1/logos`);
+  });
+}
 
 // Export app for testing and deployment
 module.exports = app; 

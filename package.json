@@ -4,6 +4,7 @@
   "description": "An open-source brand logo repository service for front-end developers",
   "main": "api/index.js",
   "scripts": {
+    "build": "npm run website:build",
     "start": "node api/index.js",
     "test": "jest",
     "build:core": "cd packages/core && npm run build",

@@ -5,7 +5,6 @@
 [![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://logohub.dev/api/health)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phase](https://img.shields.io/badge/Phase%202-Complete-success)](./roadmap/implementation-steps.md)
 
 ## 🎯 Vision
 
@@ -321,38 +320,8 @@ We welcome contributions! Use our organized toolchain for the best experience:
 4. **Test locally** with `npm start` and `npm run website:dev`
 5. **Submit Pull Request**
 
-See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) and [Legal Guidelines](./guidelines/LEGAL.md) for detailed standards.
+See our [Legal Guidelines](./guidelines/LEGAL.md) for detailed standards.
 
-## 📊 Roadmap
-
-### ✅ Phase 1: Foundation (COMPLETE)
-- [x] Core API development
-- [x] SVG to PNG/WebP conversion with aspect ratio preservation  
-- [x] Enhanced color customization (multi-color + monochrome)
-- [x] Vercel deployment and custom domain setup
-
-### ✅ Phase 2: Structure & Tools (COMPLETE)
-- [x] **55 high-quality company logos** migrated to simplified structure
-- [x] **Comprehensive toolchain** organized into 6 categories
-- [x] **Logo structure simplification** (removed categories/tags/variants)
-- [x] **Beautiful website** with interactive logo browser
-- [x] **Search functionality** and real-time filtering
-- [x] **Automated migration system** with backup safety
-
-### 🚧 Phase 3: Enhancement & Scale (IN PROGRESS)
-- [ ] GitHub Actions for automated validation
-- [ ] Enhanced API with advanced filtering
-- [ ] Community logo request system
-- [ ] Performance optimizations and CDN
-- [ ] **Symbol vs Wordmark Support**: API endpoints for companies with distinct icon/text variants
-
-### 🔮 Phase 4: Framework Packages (PLANNED)
-- [ ] Framework-specific packages (React, Vue, Angular) 
-- [ ] Analytics and usage tracking
-- [ ] Premium features and authentication
-- [ ] Enterprise logo management dashboard
-
-See [ROADMAP.md](./roadmap/ROADMAP.md) for detailed roadmap.
 
 ## 📄 License
 

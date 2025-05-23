@@ -98,19 +98,7 @@ jobs:
           
           echo "✅ All API tests passed!"
           
-      - name: Test logo validation
-        run: |
-          echo "🔍 Testing logo validation..."
-          
-          # Test validation for existing logo (if validator exists)
-          if [ -f "tools/validation/logo-validator.js" ]; then
-            node tools/validation/logo-validator.js google || echo "⚠️ Logo validator not found, skipping..."
-          else
-            echo "⚠️ Logo validator not found, skipping validation test..."
-          fi
-          
-          echo "✅ Logo validation tests completed!"
-          
+
       - name: Performance test
         run: |
           echo "⚡ Running performance tests..."

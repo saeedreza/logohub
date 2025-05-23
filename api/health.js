@@ -1,28 +1,35 @@
 /**
- * Health Check API Endpoint
+ * Health Check API Endpoint - Vercel Serverless Function
  * 
  * Simple health monitoring endpoint that returns the API status and basic information.
  * Used by monitoring services, load balancers, and deployment systems to verify
  * that the API is running and responding to requests.
- * 
- * Returns:
- * - status: Always "ok" if the API is responding
- * - timestamp: Current server time in ISO format
- * - version: Current API version for deployment tracking
  */
 
 /**
- * Handle GET /api/health endpoint
- * 
- * This endpoint should always respond quickly with a 200 status code if the API
- * is healthy and able to process requests. It requires no authentication and
- * performs no complex operations to ensure reliability.
- * 
- * @param {Object} req - Express request object (unused)
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with health status information
+ * Vercel serverless function handler
+ * @param {Object} req - Vercel request object
+ * @param {Object} res - Vercel response object
  */
 module.exports = (req, res) => {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+  
+  // Only allow GET requests
+  if (req.method !== 'GET') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+  
+  // Return health status
   res.status(200).json({ 
     status: 'ok',                           // Health status indicator
     timestamp: new Date().toISOString(),    // Current server time for sync verification
