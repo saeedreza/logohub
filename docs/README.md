@@ -1,18 +1,31 @@
 # LogoHub Documentation
 
-This folder contains the public documentation for the LogoHub project, which is served via GitHub Pages.
+🚀 **Live Documentation Site**: https://saeedreza.github.io/logohub/
 
-## Structure
+## Quick Links
 
-- `index.html`: Main landing page
-- Additional documentation will be added as the project progresses
+- **Live API**: https://logohub-3ic4eum44-refactco.vercel.app/api/v1
+- **GitHub Repository**: https://github.com/saeedreza/logohub
+- **API Health Check**: https://logohub-3ic4eum44-refactco.vercel.app/api/health
 
-## Development
+## Features
 
-To view the documentation locally, you can simply open the HTML files in your browser.
+- ✅ **Dynamic Format Conversion**: SVG → PNG/WebP on-demand
+- ✅ **Color Customization**: Real-time SVG color modification  
+- ✅ **Flexible Sizing**: Any size from 16px to 2048px
+- ✅ **Performance Optimized**: CDN-cached with aggressive caching
+- ✅ **CORS Enabled**: Ready for browser-based applications
 
-Future plans include:
-- Adding API documentation
-- Creating guides for using LogoHub in different frameworks
-- Showcasing examples and logo previews
-- Providing usage guidelines and best practices 
+## Quick Example
+
+```bash
+# Get a logo in PNG format (64x64)
+curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.png&size=64"
+
+# Get a logo with custom color (red)
+curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
+```
+
+---
+
+**Visit the full documentation at**: https://saeedreza.github.io/logohub/ 
