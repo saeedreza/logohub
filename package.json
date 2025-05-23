@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node api/health.js",
     "test": "jest",
+    "build:core": "cd packages/core && npm run build",
+    "build:react": "cd packages/react && npm run build",
+    "build:packages": "npm run build:core && npm run build:react",
     "logo:create": "node tools/logo-template.js",
     "logo:validate": "node tools/logo-validator.js",
     "logo:optimize": "npx svgo",
