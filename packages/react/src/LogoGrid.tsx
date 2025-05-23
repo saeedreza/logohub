@@ -6,8 +6,6 @@ import { useLogos } from './hooks';
 export interface LogoGridProps {
   /** Array of logo names to display */
   logos?: string[];
-  /** Logo variant for all logos */
-  variant?: 'standard' | 'monochrome';
   /** Logo format for all logos */
   format?: 'svg' | 'png' | 'webp';
   /** Logo size for all logos */
@@ -36,13 +34,14 @@ export interface LogoGridProps {
   page?: number;
   /** Limit when fetching all logos */
   limit?: number;
+  /** Search term when fetching all logos */
+  search?: string;
   /** Render function for custom logo item layout */
   renderLogo?: (logoName: string, index: number) => React.ReactNode;
 }
 
 export const LogoGrid: React.FC<LogoGridProps> = ({
   logos,
-  variant = 'standard',
   format = 'svg',
   size = 64,
   color,
@@ -56,14 +55,14 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
   errorComponent,
   fetchAll = false,
   page = 1,
-  limit = 50,
+  limit = 20,
+  search,
   renderLogo,
 }) => {
   // Fetch all logos if no specific logos provided and fetchAll is true
   const { data: logoData, loading, error } = useLogos(
     fetchAll && !logos ? client : undefined,
-    page,
-    limit
+    { page, limit, format, search }
   );
 
   // Determine which logos to display
@@ -131,7 +130,6 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
             <>
               <Logo
                 name={logoName}
-                variant={variant}
                 format={format}
                 size={size}
                 color={color}

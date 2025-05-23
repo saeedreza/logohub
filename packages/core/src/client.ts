@@ -1,6 +1,6 @@
 import type { 
   LogoHubConfig, 
-  LogoApiResponse, 
+  LogoListResponse, 
   LogoDetailResponse,
   LogoConfig,
   LogoSize 
@@ -14,7 +14,6 @@ export class LogoHubClient {
       baseUrl: config.baseUrl || 'https://logohub.dev',
       apiVersion: config.apiVersion || 'v1',
       defaultSize: config.defaultSize || 64,
-      defaultVariant: config.defaultVariant || 'standard',
       defaultFormat: config.defaultFormat || 'svg',
     };
   }
@@ -22,11 +21,22 @@ export class LogoHubClient {
   /**
    * Get list of all available logos
    */
-  async getLogos(page = 1, limit = 50): Promise<LogoApiResponse> {
-    const url = `${this.config.baseUrl}/api/${this.config.apiVersion}/logos?page=${page}&limit=${limit}`;
+  async getLogos(params: {
+    page?: number;
+    limit?: number;
+    format?: string;
+    search?: string;
+  } = {}): Promise<LogoListResponse> {
+    const { page = 1, limit = 20, format, search } = params;
+    const url = new URL(`${this.config.baseUrl}/api/${this.config.apiVersion}/logos`);
+    
+    url.searchParams.set('page', page.toString());
+    url.searchParams.set('limit', limit.toString());
+    if (format) url.searchParams.set('format', format);
+    if (search) url.searchParams.set('search', search);
     
     try {
-      const response = await fetch(url);
+      const response = await fetch(url.toString());
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
@@ -59,13 +69,12 @@ export class LogoHubClient {
   getLogoUrl(config: LogoConfig): string {
     const {
       id,
-      variant = this.config.defaultVariant,
       format = this.config.defaultFormat,
       size = this.config.defaultSize,
       color
     } = config;
 
-    const filename = `${id}-${variant}.${format}`;
+    const filename = `${id}.${format}`;
     let url = `${this.config.baseUrl}/api/${this.config.apiVersion}/logos/${id}?file=${filename}`;
 
     // Add size parameter for raster formats
@@ -73,9 +82,10 @@ export class LogoHubClient {
       url += `&size=${size}`;
     }
 
-    // Add color parameter if specified
+    // Add color parameter if specified (remove # if present)
     if (color) {
-      url += `&color=${encodeURIComponent(color)}`;
+      const cleanColor = color.replace('#', '');
+      url += `&color=${encodeURIComponent(cleanColor)}`;
     }
 
     return url;
@@ -127,14 +137,14 @@ export class LogoHubClient {
    * Get available logo sizes
    */
   getAvailableSizes(): LogoSize[] {
-    return [16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256];
+    return [16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256, 512];
   }
 
   /**
    * Validate hex color format
    */
   static isValidHexColor(color: string): boolean {
-    return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
+    return /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
   }
 
   /**

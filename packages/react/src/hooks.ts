@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { 
   LogoHubClient, 
-  LogoApiResponse, 
+  LogoListResponse, 
   LogoDetailResponse,
   LogoConfig,
   LogoHubConfig 
@@ -14,11 +14,19 @@ export function useLogoHubClient(config?: LogoHubConfig): LogoHubClient {
 }
 
 // Hook for fetching all logos
-export function useLogos(client?: LogoHubClient, page = 1, limit = 50) {
+export function useLogos(
+  client?: LogoHubClient, 
+  params: {
+    page?: number;
+    limit?: number;
+    format?: string;
+    search?: string;
+  } = {}
+) {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
   
-  const [data, setData] = useState<LogoApiResponse | null>(null);
+  const [data, setData] = useState<LogoListResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -29,7 +37,7 @@ export function useLogos(client?: LogoHubClient, page = 1, limit = 50) {
       try {
         setLoading(true);
         setError(null);
-        const response = await logoClient.getLogos(page, limit);
+        const response = await logoClient.getLogos(params);
         
         if (!cancelled) {
           setData(response);
@@ -50,12 +58,12 @@ export function useLogos(client?: LogoHubClient, page = 1, limit = 50) {
     return () => {
       cancelled = true;
     };
-  }, [logoClient, page, limit]);
+  }, [logoClient, params.page, params.limit, params.format, params.search]);
 
   const refetch = () => {
     setLoading(true);
     setError(null);
-    logoClient.getLogos(page, limit)
+    logoClient.getLogos(params)
       .then(setData)
       .catch((err) => setError(err instanceof Error ? err : new Error('Failed to fetch logos')))
       .finally(() => setLoading(false));

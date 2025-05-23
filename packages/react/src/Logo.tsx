@@ -5,8 +5,6 @@ import { LogoHubClient } from '@logohub/core';
 export interface LogoProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
   /** Logo ID (e.g., 'google', 'microsoft') */
   name: string;
-  /** Logo variant */
-  variant?: 'standard' | 'monochrome';
   /** Logo format */
   format?: 'svg' | 'png' | 'webp';
   /** Logo size (for raster formats) */
@@ -27,7 +25,6 @@ const defaultClient = new LogoHubClient();
 
 export const Logo = forwardRef<HTMLImageElement, LogoProps>(({
   name,
-  variant = 'standard',
   format = 'svg',
   size = 64,
   color,
@@ -48,11 +45,10 @@ export const Logo = forwardRef<HTMLImageElement, LogoProps>(({
   useEffect(() => {
     setHasError(false);
     setIsLoaded(false);
-  }, [name, variant, format, size, color]);
+  }, [name, format, size, color]);
 
   const logoConfig: LogoConfig = {
     id: name,
-    variant,
     format,
     size,
     color,

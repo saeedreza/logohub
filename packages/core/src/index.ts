@@ -1,10 +1,9 @@
 // Export all types
 export type {
   LogoMetadata,
-  LogoVersion,
   LogoVariant,
   LogoConfig,
-  LogoApiResponse,
+  LogoListResponse,
   LogoSummary,
   LogoDetailResponse,
   LogoSize,
@@ -15,12 +14,7 @@ export type {
 export { LogoHubClient } from './client';
 
 // Export utilities
-export const LOGO_SIZES: readonly number[] = [16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256];
-
-export const LOGO_VARIANTS = {
-  STANDARD: 'standard' as const,
-  MONOCHROME: 'monochrome' as const,
-} as const;
+export const LOGO_SIZES: readonly number[] = [16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256, 512];
 
 export const LOGO_FORMATS = {
   SVG: 'svg' as const,
@@ -30,11 +24,11 @@ export const LOGO_FORMATS = {
 
 // Utility functions
 export const validateLogoId = (id: string): boolean => {
-  return /^[a-z0-9-]+$/.test(id) && id.length > 0;
+  return /^[a-z0-9-.]+$/.test(id) && id.length > 0;
 };
 
 export const formatLogoId = (name: string): string => {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return name.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/^-+|-+$/g, '');
 };
 
 export const isValidLogoSize = (size: number): boolean => {

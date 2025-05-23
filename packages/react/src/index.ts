@@ -15,10 +15,9 @@ export {
 // Re-export core functionality for convenience
 export type {
   LogoMetadata,
-  LogoVersion,
   LogoVariant,
   LogoConfig,
-  LogoApiResponse,
+  LogoListResponse,
   LogoSummary,
   LogoDetailResponse,
   LogoSize,
@@ -28,7 +27,6 @@ export type {
 export {
   LogoHubClient,
   LOGO_SIZES,
-  LOGO_VARIANTS,
   LOGO_FORMATS,
   validateLogoId,
   formatLogoId,

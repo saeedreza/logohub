@@ -1,6 +1,6 @@
 {
   "name": "@logohub/core",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Core functionality for LogoHub - Open-source brand logo repository",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

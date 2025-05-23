@@ -1,6 +1,6 @@
 {
   "name": "@logohub/react",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React components and hooks for LogoHub - An open-source brand logo repository for front-end developers",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -33,7 +33,7 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@logohub/core": "^0.1.1"
+    "@logohub/core": "^0.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.0",

@@ -5,89 +5,98 @@ import type { CSSProperties } from 'react';
 
 export interface LogoMetadata {
   name: string;
+  title: string;
   website: string;
-  industry: string[];
-  colors: {
-    primary: string;
-    secondary: string;
-  };
-  guidelines: string;
-  lastUpdated: string;
-  contributor: string;
-  versions: LogoVersion[];
-  usage: {
-    restrictions: string;
-    attribution: string;
-  };
-}
-
-export interface LogoVersion {
-  version: string;
-  date: string;
-  description: string;
+  colors: string[];
+  hasSymbol: boolean;
+  license: string;
+  created: string;
+  updated: string;
 }
 
 export interface LogoVariant {
-  name: 'standard' | 'monochrome';
-  format: 'svg' | 'png' | 'webp';
-  size?: number;
-  color?: string;
+  name: string;
+  formats: {
+    svg: {
+      url: string;
+    };
+    png: {
+      sizes: Array<{
+        size: number;
+        maxDimension: number;
+        url: string;
+      }>;
+      dynamic: string;
+    };
+    webp: {
+      sizes: Array<{
+        size: number;
+        maxDimension: number;
+        url: string;
+      }>;
+      dynamic: string;
+    };
+  };
 }
 
 export interface LogoConfig {
   id: string;
-  variant?: LogoVariant['name'];
-  format?: LogoVariant['format'];
+  format?: 'svg' | 'png' | 'webp';
   size?: number;
   color?: string;
   className?: string;
   style?: CSSProperties;
 }
 
-export interface LogoApiResponse {
-  logos: LogoSummary[];
+// API Response Types
+export interface LogoListResponse {
   total: number;
   page: number;
   limit: number;
+  logos: LogoSummary[];
+  capabilities: {
+    formats: string[];
+    dynamicConversion: boolean;
+    colorCustomization: boolean;
+    searchEnabled: boolean;
+    standardSizes: number[];
+  };
+  message?: string;
 }
 
 export interface LogoSummary {
   id: string;
   name: string;
-  colors: {
-    primary: string;
-    secondary: string;
+  title: string;
+  tags: string[];
+  versions: string[];
+  formats: string[];
+  capabilities: {
+    colorCustomization: boolean;
+    dynamicSizing: boolean;
   };
-  variants: {
-    standard: string;
-    monochrome: string;
+  url: string;
+}
+
+export interface LogoDetailResponse {
+  id: string;
+  name: string;
+  website: string;
+  colors: string[];
+  versions: LogoVariant[];
+  capabilities: {
+    colorCustomization: boolean;
+    formats: string[];
+    standardSizes: number[];
+    dynamicSizing: boolean;
   };
 }
 
-export interface LogoDetailResponse extends LogoSummary {
-  metadata: LogoMetadata;
-  urls: {
-    svg: {
-      standard: string;
-      monochrome: string;
-    };
-    png: {
-      standard: string;
-      monochrome: string;
-    };
-    webp: {
-      standard: string;
-      monochrome: string;
-    };
-  };
-}
-
-export type LogoSize = 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96 | 128 | 256;
+export type LogoSize = 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96 | 128 | 256 | 512;
 
 export interface LogoHubConfig {
   baseUrl?: string;
   apiVersion?: string;
   defaultSize?: LogoSize;
-  defaultVariant?: LogoVariant['name'];
-  defaultFormat?: LogoVariant['format'];
+  defaultFormat?: 'svg' | 'png' | 'webp';
 } 
