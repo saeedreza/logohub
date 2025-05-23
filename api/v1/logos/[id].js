@@ -76,9 +76,13 @@ async function handleMetadata(req, res, id, logoPath) {
   // Process SVG files
   for (const file of svgFiles) {
     const parts = file.split('.');
-    const versionParts = parts[0].split('-');
-    // Remove company name prefix to get version
-    versionParts.shift();
+    const baseName = parts[0]; // e.g., "sample-company-standard"
+    const versionParts = baseName.split('-');
+    // Remove company name prefix to get version (e.g., "sample-company" -> "standard")
+    versionParts.shift(); // Remove first part
+    if (versionParts[0] === 'company') {
+      versionParts.shift(); // Remove "company" if present
+    }
     const versionName = versionParts.join('-');
     
     if (!versionMap.has(versionName)) {
@@ -145,8 +149,23 @@ async function handleFile(req, res, id, logoPath, file, color, size) {
   // Handle SVG files
   if (format === 'svg') {
     try {
-      const svgPath = path.join(logoPath, `${id}-${name}.svg`);
-      let svgContent = await fs.readFile(svgPath, 'utf8');
+      // Try different naming patterns to find the file
+      let svgPath;
+      let svgContent;
+      
+      // Pattern 1: id-name.svg (e.g., sample-company-standard.svg)
+      svgPath = path.join(logoPath, `${id}-${name}.svg`);
+      try {
+        svgContent = await fs.readFile(svgPath, 'utf8');
+      } catch (err) {
+        // Pattern 2: id-company-name.svg (e.g., sample-company-company-standard.svg)
+        svgPath = path.join(logoPath, `${id}-company-${name}.svg`);
+        try {
+          svgContent = await fs.readFile(svgPath, 'utf8');
+        } catch (err2) {
+          return res.status(404).json({ error: 'SVG file not found' });
+        }
+      }
       
       // Handle color replacement if requested
       if (color) {
@@ -179,9 +198,23 @@ async function handleFile(req, res, id, logoPath, file, color, size) {
   // Handle PNG and WebP files (converted from SVG)
   if (format === 'png' || format === 'webp') {
     try {
-      // First, try to find the original SVG file
-      const svgPath = path.join(logoPath, `${id}-${name}.svg`);
-      const svgBuffer = await fs.readFile(svgPath);
+      // Try different naming patterns to find the SVG file
+      let svgPath;
+      let svgBuffer;
+      
+      // Pattern 1: id-name.svg (e.g., sample-company-standard.svg)
+      svgPath = path.join(logoPath, `${id}-${name}.svg`);
+      try {
+        svgBuffer = await fs.readFile(svgPath);
+      } catch (err) {
+        // Pattern 2: id-company-name.svg (e.g., sample-company-company-standard.svg)
+        svgPath = path.join(logoPath, `${id}-company-${name}.svg`);
+        try {
+          svgBuffer = await fs.readFile(svgPath);
+        } catch (err2) {
+          return res.status(404).json({ error: 'SVG file not found for conversion' });
+        }
+      }
       
       // Determine size - from query param, filename, or default
       let targetSize = 256; // default size
