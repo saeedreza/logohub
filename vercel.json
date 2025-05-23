@@ -12,11 +12,16 @@
       "dest": "/api/index.js"
     },
     {
-      "src": "/logos/(.*)",
+      "src": "/health",
       "dest": "/api/index.js"
     }
   ],
   "env": {
     "NODE_ENV": "production"
+  },
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 10
+    }
   }
 } 
