@@ -1,0 +1,28 @@
+{
+  "name": "Spotify",
+  "website": "https://spotify.com",
+  "industry": [
+    "entertainment",
+    "music streaming",
+    "technology",
+    "media"
+  ],
+  "colors": {
+    "primary": "#1ED760",
+    "secondary": "#000000"
+  },
+  "guidelines": "https://developer.spotify.com/documentation/design",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (spotify.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Spotify brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

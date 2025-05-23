@@ -1,0 +1,28 @@
+{
+  "name": "Meta",
+  "website": "https://meta.com",
+  "industry": [
+    "technology",
+    "social media",
+    "virtual reality",
+    "metaverse"
+  ],
+  "colors": {
+    "primary": "#0064E1",
+    "secondary": "#0082FB"
+  },
+  "guidelines": "https://about.meta.com/brand/resources/meta/",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (meta.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Meta brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

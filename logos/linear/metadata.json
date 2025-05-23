@@ -1,0 +1,25 @@
+{
+  "name": "Linear",
+  "website": "https://linear.com",
+  "industry": [
+    "technology"
+  ],
+  "colors": {
+    "primary": "#222326",
+    "secondary": "#666666"
+  },
+  "guidelines": "https://brand.linear.com",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (linear.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Adobe",
+  "website": "https://adobe.com",
+  "industry": [
+    "technology",
+    "software",
+    "creative tools",
+    "digital media"
+  ],
+  "colors": {
+    "primary": "#FA0F00",
+    "secondary": "#000000"
+  },
+  "guidelines": "https://www.adobe.com/about-adobe/brand-center.html",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (adobe.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Adobe brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

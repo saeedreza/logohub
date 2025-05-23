@@ -1,0 +1,28 @@
+{
+  "name": "Discord",
+  "website": "https://discord.com",
+  "industry": [
+    "technology",
+    "communication",
+    "gaming",
+    "community"
+  ],
+  "colors": {
+    "primary": "#5865F2",
+    "secondary": "#000000"
+  },
+  "guidelines": "https://discord.com/branding",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (discord-icon.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Discord brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

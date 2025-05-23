@@ -1,0 +1,25 @@
+{
+  "name": "Kubernetes",
+  "website": "https://kubernetes.com",
+  "industry": [
+    "technology"
+  ],
+  "colors": {
+    "primary": "#326DE6",
+    "secondary": "#FFFFFF"
+  },
+  "guidelines": "https://brand.kubernetes.com",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (kubernetes.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

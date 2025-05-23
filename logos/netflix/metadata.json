@@ -1,0 +1,28 @@
+{
+  "name": "Netflix",
+  "website": "https://netflix.com",
+  "industry": [
+    "entertainment",
+    "streaming",
+    "media",
+    "technology"
+  ],
+  "colors": {
+    "primary": "#DB202C",
+    "secondary": "#000000"
+  },
+  "guidelines": "https://brand.netflix.com/",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (netflix.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Netflix brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Figma",
+  "website": "https://figma.com",
+  "industry": [
+    "technology",
+    "design tools",
+    "collaboration",
+    "creative software"
+  ],
+  "colors": {
+    "primary": "#0ACF83",
+    "secondary": "#A259FF"
+  },
+  "guidelines": "https://www.figma.com/brand/",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (figma.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Figma brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

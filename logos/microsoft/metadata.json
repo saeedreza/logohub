@@ -1,0 +1,28 @@
+{
+  "name": "Microsoft",
+  "website": "https://microsoft.com",
+  "industry": [
+    "technology",
+    "cloud computing",
+    "software",
+    "productivity"
+  ],
+  "colors": {
+    "primary": "#F1511B",
+    "secondary": "#00ADEF"
+  },
+  "guidelines": "https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (microsoft.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Microsoft brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

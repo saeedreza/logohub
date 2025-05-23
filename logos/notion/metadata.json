@@ -1,0 +1,28 @@
+{
+  "name": "Notion",
+  "website": "https://notion.so",
+  "industry": [
+    "technology",
+    "productivity",
+    "note-taking",
+    "collaboration"
+  ],
+  "colors": {
+    "primary": "#000000",
+    "secondary": "#FFFFFF"
+  },
+  "guidelines": "https://www.notion.so/help/brand-guidelines",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (notion-icon.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow Notion brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}

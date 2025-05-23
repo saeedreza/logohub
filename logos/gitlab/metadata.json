@@ -1,0 +1,25 @@
+{
+  "name": "GitLab",
+  "website": "https://gitlab.com",
+  "industry": [
+    "technology"
+  ],
+  "colors": {
+    "primary": "#E24329",
+    "secondary": "#FC6D26"
+  },
+  "guidelines": "https://brand.gitlab.com",
+  "lastUpdated": "2025-05-22",
+  "contributor": "LogoHub Team",
+  "versions": [
+    {
+      "version": "1.0",
+      "date": "2025-05-22",
+      "description": "Initial version imported from gilbarbara/logos (gitlab.svg)"
+    }
+  ],
+  "usage": {
+    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
+    "attribution": "Required when used in publications"
+  }
+}
