@@ -1,28 +1,13 @@
 {
-  "name": "Apple",
+  "name": "apple",
+  "title": "Apple",
   "website": "https://apple.com",
-  "industry": [
-    "technology",
-    "consumer electronics",
-    "software",
-    "services"
+  "colors": [
+    "#000000",
+    "#FFFFFF"
   ],
-  "colors": {
-    "primary": "#000000",
-    "secondary": "#FFFFFF"
-  },
-  "guidelines": "https://developer.apple.com/app-store/marketing/guidelines/",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (apple.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow Apple brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.486Z"
 }

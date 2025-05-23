@@ -1,25 +1,13 @@
 {
-  "name": "Tailwind CSS",
+  "name": "tailwind-css",
+  "title": "Tailwind CSS",
   "website": "https://tailwindcss.com",
-  "industry": [
-    "technology"
+  "colors": [
+    "#2298BD",
+    "#0ED7B5"
   ],
-  "colors": {
-    "primary": "#2298BD",
-    "secondary": "#0ED7B5"
-  },
-  "guidelines": "https://brand.tailwindcss.com",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (tailwindcss-icon.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.500Z"
 }

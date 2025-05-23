@@ -1,28 +1,13 @@
 {
-  "name": "GitHub",
+  "name": "github",
+  "title": "GitHub",
   "website": "https://github.com",
-  "industry": [
-    "technology",
-    "software development",
-    "version control",
-    "collaboration"
+  "colors": [
+    "#161614",
+    "#FFFFFF"
   ],
-  "colors": {
-    "primary": "#161614",
-    "secondary": "#FFFFFF"
-  },
-  "guidelines": "https://github.com/logos",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (github-icon.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow GitHub brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.491Z"
 }

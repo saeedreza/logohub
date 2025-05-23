@@ -1,28 +1,13 @@
 {
-  "name": "AWS",
+  "name": "aws",
+  "title": "AWS",
   "website": "https://aws.amazon.com",
-  "industry": [
-    "technology",
-    "cloud computing",
-    "web services",
-    "infrastructure"
+  "colors": [
+    "#FF9900",
+    "#252F3E"
   ],
-  "colors": {
-    "primary": "#FF9900",
-    "secondary": "#252F3E"
-  },
-  "guidelines": "https://aws.amazon.com/architecture/well-architected/",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (aws.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow AWS brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.487Z"
 }

@@ -1,0 +1,31 @@
+name,title,description,website,category,tags,colors
+openai,OpenAI,OpenAI artificial intelligence research company,https://openai.com,ai,"ai,ml,chatgpt",#412991
+anthropic,Anthropic,AI safety focused research company,https://anthropic.com,ai,"ai,safety,claude",#D97757
+stripe,Stripe,Online payment processing platform,https://stripe.com,fintech,"payments,api,fintech",#635BFF
+paypal,PayPal,Digital payment and money transfer service,https://paypal.com,fintech,"payments,transfer,digital",#003087
+coinbase,Coinbase,Cryptocurrency exchange platform,https://coinbase.com,fintech,"crypto,bitcoin,exchange",#0052FF
+shopify,Shopify,E-commerce platform for online stores,https://shopify.com,ecommerce,"ecommerce,store,platform",#96BF48
+canva,Canva,Graphic design platform,https://canva.com,design,"design,graphics,templates",#00C4CC
+framer,Framer,Interactive design and prototyping tool,https://framer.com,design,"design,prototype,web",#0099FF
+unity,Unity,Cross-platform game engine,https://unity.com,gaming,"gamedev,engine,3d",#000000
+steam,Steam,Digital video game distribution platform,https://store.steampowered.com,gaming,"gaming,distribution,valve",#1B2838
+digitalocean,DigitalOcean,Cloud infrastructure provider,https://digitalocean.com,cloud,"cloud,hosting,infrastructure",#0080FF
+cloudflare,Cloudflare,Web infrastructure and security company,https://cloudflare.com,cloud,"cdn,security,performance",#F38020
+supabase,Supabase,Open source Firebase alternative,https://supabase.com,cloud,"database,backend,open-source",#3ECF8E
+planetscale,PlanetScale,Serverless MySQL database platform,https://planetscale.com,database,"mysql,serverless,database",#000000
+railway,Railway,Cloud platform for deploying applications,https://railway.app,cloud,"deployment,hosting,cloud",#0B0D0E
+render,Render,Cloud platform for developers,https://render.com,cloud,"hosting,deployment,cloud",#46E3B7
+fly.io,Fly.io,Global application platform,https://fly.io,cloud,"edge,global,hosting",#7C2D92
+postman,Postman,API development and testing platform,https://postman.com,devtools,"api,testing,development",#FF6C37
+insomnia,Insomnia,API client and design platform,https://insomnia.rest,devtools,"api,client,rest",#4000BF
+linear,Linear,Issue tracking and project management,https://linear.app,productivity,"project-management,issues,workflow",#5E6AD2
+height,Height,Project management for teams,https://height.app,productivity,"project-management,collaboration,teams",#3633FF
+obsidian,Obsidian,Knowledge management application,https://obsidian.md,productivity,"notes,knowledge,markdown",#7C3AED
+airtable,Airtable,Cloud collaboration service,https://airtable.com,productivity,"database,collaboration,spreadsheet",#18BFFF
+mixpanel,Mixpanel,Product analytics platform,https://mixpanel.com,analytics,"analytics,product,tracking",#7856FF
+segment,Segment,Customer data platform,https://segment.com,analytics,"data,customer,analytics",#52BD94
+sentry,Sentry,Application monitoring platform,https://sentry.io,monitoring,"monitoring,errors,performance",#362D59
+datadog,Datadog,Monitoring and analytics platform,https://datadoghq.com,monitoring,"monitoring,logs,metrics",#632CA6
+zoom,Zoom,Video communications platform,https://zoom.us,communication,"video,conference,remote",#2D8CFF
+mattermost,Mattermost,Open source messaging platform,https://mattermost.com,communication,"messaging,open-source,team",#0072C6
+bluesky,Bluesky,Decentralized social network,https://bsky.app,social,"social,decentralized,network",#0085FF 

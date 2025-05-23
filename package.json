@@ -4,7 +4,7 @@
   "description": "An open-source brand logo repository service for front-end developers",
   "main": "api/index.js",
   "scripts": {
-    "start": "node api/health.js",
+    "start": "node api/index.js",
     "test": "jest",
     "build:core": "cd packages/core && npm run build",
     "build:react": "cd packages/react && npm run build",
@@ -12,6 +12,22 @@
     "logo:create": "node tools/logo-template.js",
     "logo:validate": "node tools/logo-validator.js",
     "logo:optimize": "npx svgo",
+    "logo:import:csv": "node tools/logo-batch-import.js --csv 'tools/popular-logos-2024.csv'",
+    "logo:import:json": "node tools/logo-batch-import.js --json",
+    "logo:import:sample": "node tools/logo-batch-import.js --csv 'tools/popular-logos-2024.csv'",
+    "logo:import:csv-downloads": "node tools/logo-batch-import.js --csv-downloads 'tools/popular-logos-2024.csv'",
+    "logo:import:simple": "node tools/simple-logo-importer.js",
+    "logo:source:check": "node tools/logo-source-checker.js",
+    "logo:download:available": "node tools/logo-downloader.js",
+    "logo:workflow": "npm run logo:source:check && npm run logo:download:available && npm run logo:import:simple",
+    "logo:template": "node tools/logo-batch-import.js --template",
+    "logo:count": "find logos -name metadata.json | wc -l",
+    "logo:categories": "node -e \"const fs = require('fs'); const path = require('path'); const logos = fs.readdirSync('./logos').filter(d => !d.startsWith('.')); const categories = new Set(); logos.forEach(logo => { try { const meta = JSON.parse(fs.readFileSync(path.join('./logos', logo, 'metadata.json'), 'utf8')); categories.add(meta.category || 'uncategorized'); } catch {} }); console.log('📂 Categories:', Array.from(categories).sort().join(', '));\"",
+    "website:data": "node tools/generate-logo-data.js",
+    "website:dev": "npm run website:data && vitepress dev docs",
+    "website:build": "npm run website:data && vitepress build docs",
+    "website:preview": "vitepress preview docs",
+    "dev:test": "node tools/dev-test.js",
     "validate:all": "node -e \"const {readdirSync} = require('fs'); const {LogoValidator} = require('./tools/logo-validator'); const logos = readdirSync('./logos').filter(d => d !== '.DS_Store'); console.log('Validating all logos...'); Promise.all(logos.map(async logo => { const validator = new LogoValidator(); const result = await validator.validateLogo(logo); return {logo, success: result.success}; })).then(results => { const failed = results.filter(r => !r.success); console.log(`\\n📊 Results: ${results.length - failed.length}/${results.length} passed`); if (failed.length > 0) { console.log('❌ Failed:', failed.map(f => f.logo).join(', ')); process.exit(1); } else { console.log('🎉 All logos validated successfully!'); } });\""
   },
   "keywords": [
@@ -28,16 +44,20 @@
     "url": "https://github.com/saeedreza/logohub.git"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "svgo": "^3.0.2",
+    "@vercel/analytics": "^1.5.0",
     "cors": "^2.8.5",
+    "express": "^4.18.2",
     "helmet": "^7.0.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.33.0",
+    "svgo": "^3.0.2"
   },
   "devDependencies": {
+    "axios": "^1.9.0",
     "jest": "^29.5.0",
-    "nodemon": "^3.0.1",
     "jsdom": "^23.0.0",
-    "playwright": "^1.40.0"
+    "nodemon": "^3.0.1",
+    "playwright": "^1.40.0",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.14"
   }
-} 
+}

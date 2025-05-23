@@ -5,24 +5,25 @@
 [![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://logohub.dev/api/health)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Phase](https://img.shields.io/badge/Phase%201-Complete-success)](./roadmap/implementation-steps.md)
+[![Phase](https://img.shields.io/badge/Phase%202-Complete-success)](./roadmap/implementation-steps.md)
 
 ## 🎯 Vision
 
 LogoHub provides front-end developers with instant access to company logos in multiple formats and sizes. No more hunting for logo files or dealing with inconsistent formats - just clean, scalable, and customizable logos through a simple API.
 
-> **Current Status**: Phase 1 Foundation Complete ✅ | **Progress**: 2/25 logos (Google + sample-company)
+> **Current Status**: Phase 2 Complete ✅ | **Progress**: 55 logos with simplified structure
 
 ## ✨ Features
 
 - **🔄 Dynamic Format Conversion**: SVG → PNG/WebP on-demand with aspect ratio preservation
-- **🎨 Enhanced Color Customization**: Multi-color logo support + monochrome conversion
+- **🎨 API-Powered Color Customization**: Real-time color replacement and monochrome conversion
 - **📏 Flexible Sizing**: Any size from 16px to 2048px (maintains aspect ratios)
 - **⚡ Performance Optimized**: CDN-cached with aggressive caching headers  
 - **🌐 CORS Enabled**: Ready for browser-based applications
 - **📱 Multiple Formats**: SVG (scalable), PNG (compatible), WebP (efficient)
-- **🔍 Searchable API**: Filter by industry, format, and more
-- **🛠️ Logo Management**: Complete toolchain for creating and validating logos
+- **🔍 Searchable API**: Filter and search through 55+ logos
+- **🛠️ Comprehensive Toolchain**: Complete logo management and validation system
+- **📖 Beautiful Website**: Interactive logo browser with search and filtering
 
 ## 🚀 Live API
 
@@ -38,19 +39,24 @@ curl "https://logohub.dev/api/v1/logos"
 curl "https://logohub.dev/api/v1/logos/google"
 
 # SVG with original colors
-curl "https://logohub.dev/api/v1/logos/google?file=standard.svg"
+curl "https://logohub.dev/api/v1/logos/google.svg"
 
 # SVG with custom color (red) - replaces ALL colors
-curl "https://logohub.dev/api/v1/logos/google?file=standard.svg&color=ff0000"
+curl "https://logohub.dev/api/v1/logos/google.svg?color=ff0000"
 
 # Monochrome conversion (black)
-curl "https://logohub.dev/api/v1/logos/google?file=standard.svg&color=black"
+curl "https://logohub.dev/api/v1/logos/google.svg?color=black"
 
 # PNG conversion (128px max dimension, preserves aspect ratio)
-curl "https://logohub.dev/api/v1/logos/google?file=standard.png&size=128"
+curl "https://logohub.dev/api/v1/logos/google.png?size=128"
 
 # WebP conversion with color customization
-curl "https://logohub.dev/api/v1/logos/google?file=standard.webp&size=128&color=00ff00"
+curl "https://logohub.dev/api/v1/logos/google.webp?size=128&color=00ff00"
+
+# Symbol vs Wordmark (Future Feature)
+# For logos with hasSymbol: true
+curl "https://logohub.dev/api/v1/logos/google-symbol.svg"     # Symbol only
+curl "https://logohub.dev/api/v1/logos/google.svg"           # Full wordmark
 ```
 
 ## 📖 API Documentation
@@ -61,7 +67,7 @@ curl "https://logohub.dev/api/v1/logos/google?file=standard.webp&size=128&color=
 |----------|--------|-------------|
 | `/v1/logos` | GET | List all available logos |
 | `/v1/logos/{id}` | GET | Get logo metadata with dynamic URLs |
-| `/v1/logos/{id}?file={name}.{format}` | GET | Get logo file with customization |
+| `/v1/logos/{id}.{format}` | GET | Get logo file with customization |
 | `/health` | GET | API health check |
 
 ### Parameters
@@ -69,11 +75,9 @@ curl "https://logohub.dev/api/v1/logos/google?file=standard.webp&size=128&color=
 #### Logo List (`/v1/logos`)
 - `page` (int): Page number (default: 1)
 - `limit` (int): Items per page (default: 20, max: 100)
-- `industry` (string): Filter by industry
-- `format` (string): Filter by supported format
+- `search` (string): Search by company name or website
 
-#### Logo File (`/v1/logos/{id}?file={name}.{format}`)
-- `file` (required): Filename with format (e.g., `standard.svg`)
+#### Logo File (`/v1/logos/{id}.{format}`)
 - `size` (int): Max dimension in pixels for PNG/WebP (1-2048, preserves aspect ratio)
 - `color` (hex): Color replacement for SVG (without #) - supports monochrome (black/white)
 
@@ -102,88 +106,127 @@ cd logohub
 # Install dependencies
 npm install
 
-# Run locally with Vercel CLI
-vercel dev
+# Start API server
+npm start
+
+# Start website (separate terminal)
+npm run website:dev
 ```
 
-### Logo Management Commands
+### Logo Management
+
+Our comprehensive toolchain is organized into categories:
 
 ```bash
-# Create new logo directory structure
-npm run logo:create
+# Development Tools
+node tools/development/dev-test.js              # Test API endpoints locally
+node tools/development/list-tools.js            # Interactive tool discovery
 
-# Validate individual logo
-npm run logo:validate logos/company-name
+# Import/Export Tools  
+node tools/import-export/generate-logo-data.js  # Generate logos.json
+node tools/import-export/export-metadata.js     # Export all metadata
 
-# Validate all logos
-npm run validate:all
+# Processing Tools
+node tools/processing/image-converter.js        # Convert SVG to PNG/WebP
+node tools/processing/svg-optimizer.js          # Optimize SVG files
 
-# Optimize SVG files
-npm run logo:optimize logos/company-name/*.svg
+# Validation Tools
+node tools/validation/logo-validator.js         # Validate logo structure
+node tools/validation/validate-all.js           # Validate entire repository
+
+# Metadata Tools
+node tools/metadata/metadata-updater.js         # Update metadata fields
+node tools/metadata/schema-migrator.js          # Migrate between schemas
 ```
 
 ### Project Structure
 
 ```
 logohub/
-├── api/                       # Vercel serverless functions
-│   ├── health.js             # Health check endpoint
+├── api/                          # Vercel serverless functions
+│   ├── health.js                # Health check endpoint
 │   └── v1/
 │       └── logos/
-│           ├── index.js      # Logo listing API
-│           └── [id].js       # Individual logo API
-├── logos/                    # Logo repository
-│   ├── sample-company/       # Example logo structure
-│   └── google/               # Google logo (first real company)
-│       ├── metadata.json     # Company metadata with brand colors
-│       ├── google-standard.svg     # Main logo variant
-│       └── google-monochrome.svg   # Single color version
-├── tools/                    # Development utilities  
-│   ├── image-converter.js    # Sharp-based conversion with aspect ratio preservation
-│   ├── logo-template.js      # Logo directory generator
-│   └── logo-validator.js     # Logo validation & testing
-├── docs/                     # GitHub Pages documentation
-├── roadmap/                  # Implementation roadmap & guides
-└── guidelines/               # Contribution guidelines
+│           ├── index.js         # Logo listing API
+│           └── [id].js          # Individual logo API
+├── logos/                       # Logo repository (55 logos)
+│   ├── google/                  # Example: Google logo
+│   │   ├── metadata.json        # Simplified metadata (7 fields)
+│   │   └── google.svg           # Single logo file
+│   └── ...                      # 54 other company logos
+├── tools/                       # Development utilities (organized)
+│   ├── development/             # Testing and development tools
+│   ├── import-export/           # Data generation and export tools
+│   ├── processing/              # Image processing utilities
+│   ├── validation/              # Logo validation tools
+│   ├── metadata/                # Metadata management tools
+│   └── data-files/              # Configuration and schema files
+├── docs/                        # VitePress website
+│   ├── .vitepress/
+│   │   └── components/
+│   │       └── LogoGrid.vue     # Interactive logo browser
+│   └── logos.md                 # Logo browsing page
+├── roadmap/                     # Implementation roadmap & guides
+└── guidelines/                  # Contribution guidelines
 ```
 
-### Adding New Logos (Recommended Method)
+### Adding New Logos
 
-1. **Use the Logo Template Generator**:
+1. **Create logo directory**:
    ```bash
-   npm run logo:create
-   # Follow interactive prompts
+   mkdir logos/company-name
    ```
 
-2. **Add SVG files** following naming convention: `{company-id}-{variant}.svg`
-
-3. **Validate your logo**:
-   ```bash
-   npm run logo:validate logos/company-name
+2. **Add metadata.json** with simplified schema:
+   ```json
+   {
+     "name": "Company Name",
+     "title": "Company Inc.",
+     "website": "https://company.com",
+     "colors": ["#0066cc", "#ff9900"],
+     "license": "Fair Use",
+     "hasSymbol": false,
+     "created": "2024-12-01",
+     "updated": "2024-12-01"
+   }
    ```
 
-4. **Optimize SVGs**:
+3. **Add company-name.svg** (single main logo file)
+
+4. **Validate your logo**:
    ```bash
-   npm run logo:optimize logos/company-name/*.svg
+   node tools/validation/logo-validator.js logos/company-name
    ```
 
 5. **Test locally** and submit pull request
 
-#### Metadata Schema (Auto-generated by template tool)
-```json
-{
-  "name": "Company Name",
-  "website": "https://company.com",
-  "industry": ["technology", "software"],
-  "colors": {
-    "primary": "#0066cc",
-    "secondary": "#ff9900"
-  },
-  "guidelines": "https://brand-guidelines-url.com",
-  "lastUpdated": "2024-12-01",
-  "contributor": "Your Name"
-}
-```
+#### Adding Logos with Symbol Variants (Future)
+
+For companies with distinct symbols (like Apple's apple icon vs "Apple Inc." wordmark):
+
+1. **Add both files**:
+   ```
+   logos/apple/
+   ├── metadata.json        # Set "hasSymbol": true
+   ├── apple.svg           # Full wordmark with text
+   └── apple-symbol.svg    # Symbol/icon only
+   ```
+
+2. **Update metadata**:
+   ```json
+   {
+     "name": "apple",
+     "hasSymbol": true,
+     "...": "..."
+   }
+   ```
+
+**Examples of companies that would benefit**:
+- **Apple**: Apple icon vs "Apple" wordmark
+- **Nike**: Swoosh vs "Nike" text
+- **McDonald's**: Golden arches vs "McDonald's" text
+- **Twitter/X**: Bird/X icon vs full logo
+- **Instagram**: Camera icon vs "Instagram" wordmark
 
 ## 🌟 Usage Examples
 
@@ -195,27 +238,50 @@ const logoData = await response.json();
 
 // Use in React component (aspect ratio preserved)
 <img 
-  src="https://logohub.dev/api/v1/logos/google?file=standard.png&size=128"
+  src="https://logohub.dev/api/v1/logos/google.png?size=128"
   alt="Google Logo"
   style={{maxWidth: '128px', height: 'auto'}}
 />
+
+// Check for symbol vs wordmark variants
+if (logoData.hasSymbol) {
+  // Use symbol for compact spaces (planned feature)
+  <img 
+    src="https://logohub.dev/api/v1/logos/google-symbol.svg?color=333333"
+    alt="Google Symbol"
+    className="icon-small"
+  />
+  
+  // Use full wordmark for headers
+  <img 
+    src="https://logohub.dev/api/v1/logos/google.svg"
+    alt="Google Logo"
+    className="logo-header"
+  />
+} else {
+  // Use single logo file
+  <img 
+    src="https://logohub.dev/api/v1/logos/google.svg"
+    alt="Google Logo"
+  />
+}
 ```
 
 ### HTML
 ```html
 <!-- SVG with custom color (all colors replaced) -->
-<img src="https://logohub.dev/api/v1/logos/google?file=standard.svg&color=ff0000" 
+<img src="https://logohub.dev/api/v1/logos/google.svg?color=ff0000" 
      alt="Google Logo in Red" />
 
 <!-- Monochrome version -->
-<img src="https://logohub.dev/api/v1/logos/google?file=standard.svg&color=black" 
+<img src="https://logohub.dev/api/v1/logos/google.svg?color=black" 
      alt="Google Logo Monochrome" />
 
 <!-- WebP for modern browsers (aspect ratio preserved) -->
 <picture>
-  <source srcset="https://logohub.dev/api/v1/logos/google?file=standard.webp&size=128" 
+  <source srcset="https://logohub.dev/api/v1/logos/google.webp?size=128" 
           type="image/webp">
-  <img src="https://logohub.dev/api/v1/logos/google?file=standard.png&size=128" 
+  <img src="https://logohub.dev/api/v1/logos/google.png?size=128" 
        alt="Google Logo">
 </picture>
 ```
@@ -223,7 +289,7 @@ const logoData = await response.json();
 ### CSS
 ```css
 .google-logo {
-  background-image: url('https://logohub.dev/api/v1/logos/google?file=standard.svg&color=ffffff');
+  background-image: url('https://logohub.dev/api/v1/logos/google.svg?color=ffffff');
   width: 200px;
   height: auto;
   background-size: contain;
@@ -247,12 +313,12 @@ vercel --prod
 
 ## 🤝 Contributing
 
-We welcome contributions! Use our logo management tools for the best experience:
+We welcome contributions! Use our organized toolchain for the best experience:
 
 1. **Fork the repository**
-2. **Create logos** using `npm run logo:create`  
-3. **Validate logos** with `npm run logo:validate`
-4. **Test locally** with `vercel dev`
+2. **Add logos** following the simplified structure
+3. **Validate logos** with our validation tools
+4. **Test locally** with `npm start` and `npm run website:dev`
 5. **Submit Pull Request**
 
 See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) for detailed standards.
@@ -263,22 +329,28 @@ See our [Contributing Guidelines](./guidelines/CONTRIBUTING.md) for detailed sta
 - [x] Core API development
 - [x] SVG to PNG/WebP conversion with aspect ratio preservation  
 - [x] Enhanced color customization (multi-color + monochrome)
-- [x] Vercel deployment
-- [x] Custom domain setup
-- [x] **NEW**: Logo management system (create/validate/optimize)
-- [x] **NEW**: Google logo added as first real company
+- [x] Vercel deployment and custom domain setup
 
-### 🚧 Phase 2: Logo Collection Growth (IN PROGRESS - 2/25)
-- [ ] Add 23 more high-quality company logos
+### ✅ Phase 2: Structure & Tools (COMPLETE)
+- [x] **55 high-quality company logos** migrated to simplified structure
+- [x] **Comprehensive toolchain** organized into 6 categories
+- [x] **Logo structure simplification** (removed categories/tags/variants)
+- [x] **Beautiful website** with interactive logo browser
+- [x] **Search functionality** and real-time filtering
+- [x] **Automated migration system** with backup safety
+
+### 🚧 Phase 3: Enhancement & Scale (IN PROGRESS)
 - [ ] GitHub Actions for automated validation
-- [ ] Enhanced documentation with interactive browser
+- [ ] Enhanced API with advanced filtering
 - [ ] Community logo request system
+- [ ] Performance optimizations and CDN
+- [ ] **Symbol vs Wordmark Support**: API endpoints for companies with distinct icon/text variants
 
-### 🔮 Phase 3: Framework Packages (PLANNED)
+### 🔮 Phase 4: Framework Packages (PLANNED)
 - [ ] Framework-specific packages (React, Vue, Angular) 
-- [ ] Advanced search and filtering
 - [ ] Analytics and usage tracking
-- [ ] Optional authentication system
+- [ ] Premium features and authentication
+- [ ] Enterprise logo management dashboard
 
 See [implementation-steps.md](./roadmap/implementation-steps.md) for detailed roadmap.
 
@@ -289,10 +361,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Links
 
 - **API Base**: https://logohub.dev/api/v1
+- **Logo Browser**: https://logohub.dev/logos
 - **Documentation**: https://logohub.dev/
 - **GitHub Repository**: https://github.com/saeedreza/logohub
 - **Issues & Feature Requests**: https://github.com/saeedreza/logohub/issues
-- **Development Guide**: [./roadmap/development-guide.md](./roadmap/development-guide.md)
 
 ## ⚖️ Legal Notice
 
@@ -302,4 +374,84 @@ LogoHub is a tool for developers. All logos remain the property of their respect
 
 **Made with ❤️ for the developer community** 
 
-**Phase 1 Complete ✅ | Next: 25 Company Logos by Q1 2025** 
+**Phase 2 Complete ✅ | 55 Logos with Simplified Structure | Next: Scale & Enhancement**
+
+## 🚀 Quick Start
+
+### API Server
+```bash
+npm start  # Starts API server on http://localhost:3000
+```
+
+### Website Development
+```bash
+npm run website:dev  # Starts VitePress site on http://localhost:5173
+```
+
+## 📊 Current Status
+
+- **55 Logos** with simplified structure
+- **32% Storage Reduction** (81→55 files after migration)
+- **Comprehensive Toolchain** across 6 organized categories
+- **Full API Integration** with dynamic sizing and format conversion
+- **Beautiful Website** with search-driven logo browser
+- **Zero Data Loss** migration with automated backups
+
+## 🌐 Website Features
+
+Our VitePress-powered website includes:
+
+- **Interactive Logo Browser**: Search through all 55 logos in real-time
+- **API Integration**: Direct integration with LogoHub API (no file duplication)
+- **Grid & List Views**: Flexible viewing options
+- **Logo Details**: Modal system with usage examples and download options
+- **Responsive Design**: Mobile-friendly interface
+- **Format Support**: SVG, PNG, WebP with dynamic conversion
+- **Color Customization**: API-powered color parameter support
+
+### Website URLs
+
+- **Homepage**: http://localhost:5173
+- **Logo Browser**: http://localhost:5173/logos
+- **API Documentation**: http://localhost:5173/api
+- **Usage Guide**: http://localhost:5173/guide
+
+## 🔧 API Endpoints
+
+### List All Logos
+```bash
+GET http://localhost:3000/api/v1/logos
+```
+
+### Get Specific Logo
+```bash
+GET http://localhost:3000/api/v1/logos/{logoId}
+GET http://localhost:3000/api/v1/logos/{logoId}.png?size=64
+GET http://localhost:3000/api/v1/logos/{logoId}.svg?color=ff0000
+```
+
+### Logo Metadata
+```bash
+GET http://localhost:3000/api/v1/logos/{logoId}/metadata
+```
+
+### Symbol vs Wordmark Support (Planned)
+
+For companies with both symbol and wordmark variants:
+
+```bash
+# Check if logo has symbol variant
+curl "https://logohub.dev/api/v1/logos/google"
+# Returns: { "hasSymbol": true, ... }
+
+# Get symbol only (icon/mark)
+curl "https://logohub.dev/api/v1/logos/google-symbol.svg"
+
+# Get full wordmark (logo + text)  
+curl "https://logohub.dev/api/v1/logos/google.svg"
+
+# Works with all formats and customizations
+curl "https://logohub.dev/api/v1/logos/google-symbol.png?size=64&color=ff0000"
+```
+
+> **Note**: Currently all 55 logos have `hasSymbol: false`. This feature will be added as we expand the collection with companies that have distinct symbol variants. 

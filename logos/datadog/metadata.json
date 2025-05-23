@@ -1,0 +1,13 @@
+{
+  "name": "datadog",
+  "title": "Datadog",
+  "website": "https://datadoghq.com",
+  "colors": [
+    "#632CA6",
+    "#666666"
+  ],
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-23T06:15:51.730Z",
+  "updated": "2025-05-23T19:20:17.489Z"
+}

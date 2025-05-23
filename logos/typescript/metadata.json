@@ -1,25 +1,13 @@
 {
-  "name": "TypeScript",
+  "name": "typescript",
+  "title": "TypeScript",
   "website": "https://typescript.com",
-  "industry": [
-    "technology"
+  "colors": [
+    "#3178C6",
+    "#FFFFFF"
   ],
-  "colors": {
-    "primary": "#3178C6",
-    "secondary": "#FFFFFF"
-  },
-  "guidelines": "https://brand.typescript.com",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (typescript-icon.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.500Z"
 }

@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const { analytics } = require('../../utils/analytics');
 
 // Simple rate limiting
 const rateLimits = new Map();
@@ -53,6 +54,12 @@ module.exports = async (req, res) => {
     return;
   }
   
+  // Track API call
+  await analytics.trackApiCall(req, '/api/v1/logos', {
+    hasFilters: !!(req.query.industry || req.query.format),
+    pagination: { page: req.query.page, limit: req.query.limit }
+  });
+  
   rateLimit(req, res);
   
   try {
@@ -60,6 +67,14 @@ module.exports = async (req, res) => {
     const limit = Math.min(parseInt(req.query.limit) || 20, 100);
     const industry = req.query.industry;
     const format = req.query.format;
+    const search = req.query.search; // Add search support
+    
+    // Track search queries if present
+    if (search) {
+      await analytics.trackSearch(req, search, {
+        filters: { industry, format }
+      });
+    }
     
     // Get the absolute path to the logos directory
     const logosPath = path.join(process.cwd(), 'logos');
@@ -71,6 +86,7 @@ module.exports = async (req, res) => {
       companies = companies.filter(name => !name.startsWith('.'));
     } catch (err) {
       // Logos directory doesn't exist yet - return empty result
+      await analytics.trackError(err, { endpoint: '/api/v1/logos', context: 'logos_directory_missing' });
       return res.json({
         total: 0,
         page,
@@ -109,8 +125,21 @@ module.exports = async (req, res) => {
             return null;
           }
           
-          // Apply industry filter if specified
-          if (industry && !metadata.industry.includes(industry)) {
+          // Apply search filter if specified
+          if (search) {
+            const searchLower = search.toLowerCase();
+            const matchesName = metadata.name?.toLowerCase().includes(searchLower);
+            const matchesTitle = metadata.title?.toLowerCase().includes(searchLower);
+            const matchesTags = metadata.tags?.some(tag => tag.toLowerCase().includes(searchLower));
+            const matchesCategory = metadata.category?.toLowerCase().includes(searchLower);
+            
+            if (!matchesName && !matchesTitle && !matchesTags && !matchesCategory) {
+              return null;
+            }
+          }
+          
+          // Apply industry filter if specified  
+          if (industry && metadata.category !== industry) {
             return null;
           }
           
@@ -137,10 +166,13 @@ module.exports = async (req, res) => {
           return {
             id: company,
             name: metadata.name,
+            title: metadata.title,
+            category: metadata.category,
+            tags: metadata.tags || [],
             versions: [...new Set(versions)],
             formats: availableFormats,
             capabilities: {
-              colorCustomization: !!metadata.colors?.primary,
+              colorCustomization: !!metadata.colors?.length,
               dynamicSizing: true
             },
             url: `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}/api/v1/logos/${company}`
@@ -165,23 +197,36 @@ module.exports = async (req, res) => {
       page,
       limit,
       logos: paginatedLogos,
+      categories: [...new Set(filteredLogos.map(logo => logo.category))].sort(),
       capabilities: {
         formats: ['svg', 'png', 'webp'],
         dynamicConversion: true,
         colorCustomization: true,
+        searchEnabled: true,
         standardSizes: [16, 32, 64, 128, 256, 512]
       }
     };
     
+    // Track search results
+    if (search) {
+      await analytics.trackSearch(req, search, {
+        resultsCount: filteredLogos.length,
+        filters: { industry, format }
+      });
+    }
+    
     // Add helpful message if no logos found
     if (filteredLogos.length === 0) {
-      response.message = 'No logos found. Add logos to the /logos directory to get started!';
+      response.message = search 
+        ? `No logos found for "${search}". Try a different search term.`
+        : 'No logos found. Add logos to the /logos directory to get started!';
     }
     
     res.setHeader('Cache-Control', 'public, max-age=300'); // Cache for 5 minutes
     res.json(response);
   } catch (err) {
     console.error('Error fetching logos:', err);
+    await analytics.trackError(err, { endpoint: '/api/v1/logos', statusCode: 500 });
     res.status(500).json({ error: 'Internal server error' });
   }
 }; 

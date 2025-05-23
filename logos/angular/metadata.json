@@ -1,25 +1,13 @@
 {
-  "name": "Angular",
+  "name": "angular",
+  "title": "Angular",
   "website": "https://angular.com",
-  "industry": [
-    "technology"
+  "colors": [
+    "#E40035",
+    "#F60A48"
   ],
-  "colors": {
-    "primary": "#E40035",
-    "secondary": "#F60A48"
-  },
-  "guidelines": "https://brand.angular.com",
-  "lastUpdated": "2025-05-22",
-  "contributor": "LogoHub Team",
-  "versions": [
-    {
-      "version": "1.0",
-      "date": "2025-05-22",
-      "description": "Initial version imported from gilbarbara/logos (angular-icon.svg)"
-    }
-  ],
-  "usage": {
-    "restrictions": "For personal and commercial use in projects. Follow company brand guidelines.",
-    "attribution": "Required when used in publications"
-  }
+  "hasSymbol": false,
+  "license": "Please check company's brand guidelines",
+  "created": "2025-05-22",
+  "updated": "2025-05-23T19:20:17.485Z"
 }

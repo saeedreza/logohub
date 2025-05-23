@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const { analytics } = require('../../utils/analytics');
 const { 
   convertSvgBufferToPng, 
   convertSvgBufferToWebp, 
@@ -33,25 +34,56 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Missing id parameter' });
     }
 
+    // Track logo API call
+    await analytics.trackApiCall(req, `/api/v1/logos/${id}`, {
+      hasFile: !!file,
+      hasColorCustomization: !!color,
+      hasSizeCustomization: !!size
+    });
+
     const logoPath = path.join(process.cwd(), 'logos', id);
     
     // Check if logo exists
     try {
       await fs.access(logoPath);
     } catch (err) {
+      await analytics.trackError(new Error('Logo not found'), { 
+        endpoint: `/api/v1/logos/${id}`, 
+        statusCode: 404,
+        logoId: id 
+      });
       return res.status(404).json({ error: 'Logo not found' });
     }
 
     // If no file parameter, return metadata
     if (!file) {
+      // Track logo view (metadata request)
+      await analytics.trackLogoView(req, id, {
+        format: 'metadata',
+        requestType: 'metadata'
+      });
       return await handleMetadata(req, res, id, logoPath);
     }
+
+    // Track logo view/download (file request)
+    const [name, format] = file.split('.');
+    await analytics.trackLogoView(req, id, {
+      format: format || 'unknown',
+      size: size,
+      color: color,
+      variant: name,
+      requestType: 'file'
+    });
 
     // Handle file request
     return await handleFile(req, res, id, logoPath, file, color, size);
     
   } catch (err) {
     console.error('Error in logo API:', err);
+    await analytics.trackError(err, { 
+      endpoint: `/api/v1/logos/${req.query.id}`, 
+      statusCode: 500 
+    });
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -63,6 +95,11 @@ async function handleMetadata(req, res, id, logoPath) {
   try {
     metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
   } catch (err) {
+    await analytics.trackError(err, { 
+      endpoint: `/api/v1/logos/${id}`, 
+      context: 'metadata_read_failed',
+      logoId: id 
+    });
     return res.status(500).json({ error: 'Could not read logo metadata' });
   }
   

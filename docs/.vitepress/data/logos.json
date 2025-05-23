@@ -1,0 +1,695 @@
+{
+  "logos": [
+    {
+      "id": "adobe",
+      "name": "Adobe",
+      "website": "https://adobe.com",
+      "colors": [
+        "#FA0F00",
+        "#000000"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.484Z"
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "website": "https://airtable.com",
+      "colors": [
+        "#FFBF00",
+        "#26B5F8"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.728Z",
+      "updated": "2025-05-23T19:20:17.485Z"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "website": "https://angular.com",
+      "colors": [
+        "#E40035",
+        "#F60A48"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.485Z"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "website": "https://anthropic.com",
+      "colors": [
+        "#181818",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.725Z",
+      "updated": "2025-05-23T19:20:17.486Z"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "website": "https://apple.com",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.486Z"
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "website": "https://aws.amazon.com",
+      "colors": [
+        "#FF9900",
+        "#252F3E"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.487Z"
+    },
+    {
+      "id": "bluesky",
+      "name": "Bluesky",
+      "website": "https://bsky.app",
+      "colors": [
+        "#1185FE",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.731Z",
+      "updated": "2025-05-23T19:20:17.487Z"
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "website": "https://canva.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.247Z",
+      "updated": "2025-05-23T19:20:17.488Z"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "website": "https://cloudflare.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.276Z",
+      "updated": "2025-05-23T19:20:17.488Z"
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "website": "https://coinbase.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.238Z",
+      "updated": "2025-05-23T19:20:17.489Z"
+    },
+    {
+      "id": "datadog",
+      "name": "Datadog",
+      "website": "https://datadoghq.com",
+      "colors": [
+        "#632CA6",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.730Z",
+      "updated": "2025-05-23T19:20:17.489Z"
+    },
+    {
+      "id": "digitalocean",
+      "name": "DigitalOcean",
+      "website": "https://digitalocean.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.272Z",
+      "updated": "2025-05-23T19:20:17.489Z"
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "website": "https://discord.com",
+      "colors": [
+        "#5865F2",
+        "#000000"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.490Z"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "website": "https://docker.com",
+      "colors": [
+        "#2396ED",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.490Z"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "website": "https://figma.com",
+      "colors": [
+        "#0ACF83",
+        "#A259FF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.490Z"
+    },
+    {
+      "id": "fly-io",
+      "name": "Fly.io",
+      "website": "https://fly.io",
+      "colors": [
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.727Z",
+      "updated": "2025-05-23T19:20:17.491Z"
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "website": "https://framer.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.251Z",
+      "updated": "2025-05-23T19:20:17.491Z"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "website": "https://github.com",
+      "colors": [
+        "#161614",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.491Z"
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "website": "https://gitlab.com",
+      "colors": [
+        "#E24329",
+        "#FC6D26"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.492Z"
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "website": "https://google.com",
+      "colors": [
+        "#4285F4",
+        "#34A853"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.492Z"
+    },
+    {
+      "id": "height",
+      "name": "Height",
+      "website": "https://height.app",
+      "colors": [
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.728Z",
+      "updated": "2025-05-23T19:20:17.492Z"
+    },
+    {
+      "id": "insomnia",
+      "name": "Insomnia",
+      "website": "https://insomnia.rest",
+      "colors": [
+        "#7400E1",
+        "#4000BF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.728Z",
+      "updated": "2025-05-23T19:20:17.492Z"
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "website": "https://kubernetes.com",
+      "colors": [
+        "#326DE6",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.493Z"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "website": "https://linear.com",
+      "colors": [
+        "#222326",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.493Z"
+    },
+    {
+      "id": "mattermost",
+      "name": "Mattermost",
+      "website": "https://mattermost.com",
+      "colors": [
+        "#0058CC",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.730Z",
+      "updated": "2025-05-23T19:20:17.493Z"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "website": "https://meta.com",
+      "colors": [
+        "#0064E1",
+        "#0082FB"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.494Z"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "website": "https://microsoft.com",
+      "colors": [
+        "#F1511B",
+        "#00ADEF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.494Z"
+    },
+    {
+      "id": "mixpanel",
+      "name": "Mixpanel",
+      "website": "https://mixpanel.com",
+      "colors": [
+        "#33547D",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.729Z",
+      "updated": "2025-05-23T19:20:17.494Z"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "website": "https://netflix.com",
+      "colors": [
+        "#DB202C",
+        "#000000"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.495Z"
+    },
+    {
+      "id": "node.js",
+      "name": "Node.js",
+      "website": "https://node.js.com",
+      "colors": [
+        "#539E43",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.495Z"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "website": "https://notion.so",
+      "colors": [
+        "#000000",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.495Z"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "website": "https://obsidian.md",
+      "colors": [
+        "#8060D3",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.728Z",
+      "updated": "2025-05-23T19:20:17.495Z"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "website": "https://openai.com",
+      "colors": [
+        "#000000",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.724Z",
+      "updated": "2025-05-23T19:20:17.495Z"
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "website": "https://paypal.com",
+      "colors": [
+        "#27346A",
+        "#2790C3"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.726Z",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "planetscale",
+      "name": "PlanetScale",
+      "website": "https://planetscale.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.285Z",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "website": "https://postgresql.com",
+      "colors": [
+        "#000000",
+        "#336791"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "website": "https://postman.com",
+      "colors": [
+        "#FF6C37",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.727Z",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "railway",
+      "name": "Railway",
+      "website": "https://railway.app",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.288Z",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "website": "https://react.com",
+      "colors": [
+        "#00D8FF",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.496Z"
+    },
+    {
+      "id": "render",
+      "name": "Render",
+      "website": "https://render.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.291Z",
+      "updated": "2025-05-23T19:20:17.497Z"
+    },
+    {
+      "id": "sample-company",
+      "name": "Sample Company",
+      "website": "https://samplecompany.com",
+      "colors": [
+        "#0066cc",
+        "#ff9900"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-15",
+      "updated": "2025-05-23T19:20:17.497Z"
+    },
+    {
+      "id": "segment",
+      "name": "Segment",
+      "website": "https://segment.com",
+      "colors": [
+        "#4FB58B",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.729Z",
+      "updated": "2025-05-23T19:20:17.497Z"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "website": "https://sentry.io",
+      "colors": [
+        "#362D59",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.729Z",
+      "updated": "2025-05-23T19:20:17.497Z"
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "website": "https://shopify.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.243Z",
+      "updated": "2025-05-23T19:20:17.498Z"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "website": "https://slack.com",
+      "colors": [
+        "#E01E5A",
+        "#36C5F0"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.498Z"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "website": "https://spotify.com",
+      "colors": [
+        "#1ED760",
+        "#000000"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.499Z"
+    },
+    {
+      "id": "steam",
+      "name": "Steam",
+      "website": "https://store.steampowered.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.265Z",
+      "updated": "2025-05-23T19:20:17.499Z"
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "website": "https://stripe.com",
+      "colors": [
+        "#635BFF",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23",
+      "updated": "2025-05-23T19:23:29.295Z"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "website": "https://supabase.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.280Z",
+      "updated": "2025-05-23T19:20:17.499Z"
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "website": "https://tailwindcss.com",
+      "colors": [
+        "#2298BD",
+        "#0ED7B5"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.500Z"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "website": "https://typescript.com",
+      "colors": [
+        "#3178C6",
+        "#FFFFFF"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.500Z"
+    },
+    {
+      "id": "unity",
+      "name": "Unity",
+      "website": "https://unity.com",
+      "colors": [],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:14:39.255Z",
+      "updated": "2025-05-23T19:20:17.500Z"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "website": "https://vercel.com",
+      "colors": [
+        "#000000",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.501Z"
+    },
+    {
+      "id": "vue.js",
+      "name": "Vue.js",
+      "website": "https://vue.js.com",
+      "colors": [
+        "#41B883",
+        "#35495E"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-22",
+      "updated": "2025-05-23T19:20:17.501Z"
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "website": "https://zoom.us",
+      "colors": [
+        "#0B5CFF",
+        "#666666"
+      ],
+      "hasSymbol": false,
+      "hasMainSvg": true,
+      "created": "2025-05-23T06:15:51.730Z",
+      "updated": "2025-05-23T19:20:17.501Z"
+    }
+  ],
+  "stats": {
+    "total": 55,
+    "withSymbols": 0,
+    "withMainSvg": 55,
+    "uniqueWebsites": 55,
+    "uniqueColors": 54,
+    "lastUpdated": "2025-05-23T19:29:12.839Z"
+  },
+  "meta": {
+    "version": "3.0.0",
+    "schema": "simplified",
+    "generatedBy": "LogoHub Data Generator",
+    "apiEndpoint": "/api/v1/logos"
+  }
+}

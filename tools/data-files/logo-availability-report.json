@@ -1,0 +1,498 @@
+[
+  {
+    "name": "openai",
+    "title": "OpenAI",
+    "category": "ai",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "openai.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openai.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "anthropic",
+    "title": "Anthropic",
+    "category": "ai",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "anthropic.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/anthropic.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "stripe",
+    "title": "Stripe",
+    "category": "fintech",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "stripe.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/stripe.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/stripe.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "paypal",
+    "title": "PayPal",
+    "category": "fintech",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "paypal.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/paypal.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/paypal.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "coinbase",
+    "title": "Coinbase",
+    "category": "fintech",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/coinbase.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "shopify",
+    "title": "Shopify",
+    "category": "ecommerce",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "shopify.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/shopify.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/shopify.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "canva",
+    "title": "Canva",
+    "category": "design",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "framer",
+    "title": "Framer",
+    "category": "design",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "framer.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/framer.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/framer.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "unity",
+    "title": "Unity",
+    "category": "gaming",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "unity.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/unity.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/unity.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "steam",
+    "title": "Steam",
+    "category": "gaming",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "steam.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/steam.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/steam.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "digitalocean",
+    "title": "DigitalOcean",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/digitalocean.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "cloudflare",
+    "title": "Cloudflare",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "cloudflare.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/cloudflare.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "supabase",
+    "title": "Supabase",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "supabase.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/supabase.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/supabase.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "planetscale",
+    "title": "PlanetScale",
+    "category": "database",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "planetscale.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/planetscale.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/planetscale.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "railway",
+    "title": "Railway",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/railway.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "render",
+    "title": "Render",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/render.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "fly.io",
+    "title": "Fly.io",
+    "category": "cloud",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": false,
+        "url": null
+      }
+    },
+    "hasSource": false
+  },
+  {
+    "name": "postman",
+    "title": "Postman",
+    "category": "devtools",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "postman.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/postman.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "insomnia",
+    "title": "Insomnia",
+    "category": "devtools",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "insomnia.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/insomnia.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/insomnia.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "linear",
+    "title": "Linear",
+    "category": "productivity",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "linear.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/linear.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linear.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "height",
+    "title": "Height",
+    "category": "productivity",
+    "sources": {
+      "gilbarbara": {
+        "available": false
+      },
+      "simpleIcons": {
+        "available": false,
+        "url": null
+      }
+    },
+    "hasSource": false
+  },
+  {
+    "name": "obsidian",
+    "title": "Obsidian",
+    "category": "productivity",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "obsidian.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/obsidian.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/obsidian.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "airtable",
+    "title": "Airtable",
+    "category": "productivity",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "airtable.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/airtable.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/airtable.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "mixpanel",
+    "title": "Mixpanel",
+    "category": "analytics",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "mixpanel.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/mixpanel.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mixpanel.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "segment",
+    "title": "Segment",
+    "category": "analytics",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "segment.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/segment.svg"
+      },
+      "simpleIcons": {
+        "available": false,
+        "url": null
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "sentry",
+    "title": "Sentry",
+    "category": "monitoring",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "sentry.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/sentry.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sentry.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "datadog",
+    "title": "Datadog",
+    "category": "monitoring",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "datadog.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/datadog.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/datadog.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "zoom",
+    "title": "Zoom",
+    "category": "communication",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "zoom.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/zoom.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/zoom.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "mattermost",
+    "title": "Mattermost",
+    "category": "communication",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "mattermost.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/mattermost.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mattermost.svg"
+      }
+    },
+    "hasSource": true
+  },
+  {
+    "name": "bluesky",
+    "title": "Bluesky",
+    "category": "social",
+    "sources": {
+      "gilbarbara": {
+        "available": true,
+        "filename": "bluesky.svg",
+        "url": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/bluesky.svg"
+      },
+      "simpleIcons": {
+        "available": true,
+        "url": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bluesky.svg"
+      }
+    },
+    "hasSource": true
+  }
+]
