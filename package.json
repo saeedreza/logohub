@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/logohub.git"
+    "url": "https://github.com/saeedreza/logohub.git"
   },
   "dependencies": {
     "express": "^4.18.2",

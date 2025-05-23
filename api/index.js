@@ -1,56 +1,61 @@
 const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
-const svgo = require('svgo');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
-// Rate limiting middleware (simple implementation)
+// Simple rate limiting middleware (optional for now)
 const rateLimits = new Map();
-app.use((req, res, next) => {
+const rateLimit = (req, res, next) => {
   const apiKey = req.headers.authorization?.split(' ')[1];
+  const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
+  const identifier = apiKey || clientIP;
   
-  if (!apiKey) {
-    return res.status(401).json({ error: 'Missing API key' });
-  }
-  
-  // Check if we have a rate limit record for this key
-  if (!rateLimits.has(apiKey)) {
-    rateLimits.set(apiKey, {
-      limit: 100, // Default to free tier
+  // For development, we'll be more lenient with rate limiting
+  if (!rateLimits.has(identifier)) {
+    rateLimits.set(identifier, {
+      limit: 100,
       remaining: 100,
       reset: Date.now() + 3600000, // 1 hour from now
     });
   }
   
-  const rateLimit = rateLimits.get(apiKey);
+  const limit = rateLimits.get(identifier);
   
   // Reset if time expired
-  if (Date.now() > rateLimit.reset) {
-    rateLimit.remaining = rateLimit.limit;
-    rateLimit.reset = Date.now() + 3600000;
+  if (Date.now() > limit.reset) {
+    limit.remaining = limit.limit;
+    limit.reset = Date.now() + 3600000;
   }
   
   // Set headers
-  res.setHeader('X-RateLimit-Limit', rateLimit.limit);
-  res.setHeader('X-RateLimit-Remaining', rateLimit.remaining);
-  res.setHeader('X-RateLimit-Reset', Math.floor(rateLimit.reset / 1000));
+  res.setHeader('X-RateLimit-Limit', limit.limit);
+  res.setHeader('X-RateLimit-Remaining', limit.remaining);
+  res.setHeader('X-RateLimit-Reset', Math.floor(limit.reset / 1000));
   
-  // Check if rate limit exceeded
-  if (rateLimit.remaining <= 0) {
-    return res.status(429).json({ 
-      error: 'Rate limit exceeded',
-      retryAfter: Math.ceil((rateLimit.reset - Date.now()) / 1000)
-    });
+  // For now, we'll warn but not block
+  if (limit.remaining <= 0) {
+    console.warn(`Rate limit exceeded for ${identifier}`);
+    // Don't block for now, just log
   }
   
   // Decrement remaining requests
-  rateLimit.remaining--;
+  limit.remaining--;
   
   next();
+};
+
+// Apply rate limiting to API routes
+app.use('/v1', rateLimit);
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // Get all logos
@@ -62,7 +67,7 @@ app.get('/v1/logos', async (req, res) => {
     const format = req.query.format;
     
     // Read logos directory
-    const logosPath = path.join(__dirname, '../logos');
+    const logosPath = path.join(process.cwd(), 'logos');
     const companies = await fs.readdir(logosPath);
     
     // Filter and format results
@@ -105,7 +110,7 @@ app.get('/v1/logos', async (req, res) => {
             name: metadata.name,
             versions: [...new Set(versions)],
             formats,
-            url: `https://api.logohub.dev/v1/logos/${company}`
+            url: `${req.protocol}://${req.get('host')}/v1/logos/${company}`
           };
         } catch (err) {
           console.error(`Error processing ${company}:`, err);
@@ -138,7 +143,7 @@ app.get('/v1/logos', async (req, res) => {
 app.get('/v1/logos/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const logoPath = path.join(__dirname, '../logos', id);
+    const logoPath = path.join(process.cwd(), 'logos', id);
     
     // Check if logo exists
     try {
@@ -176,7 +181,7 @@ app.get('/v1/logos/:id', async (req, res) => {
       
       versionMap.get(versionName).formats.push({
         format: 'svg',
-        url: `https://api.logohub.dev/v1/logos/${id}/${versionName}.svg`
+        url: `${req.protocol}://${req.get('host')}/v1/logos/${id}/${versionName}.svg`
       });
     }
     
@@ -211,7 +216,7 @@ app.get('/v1/logos/:id', async (req, res) => {
       pngFormat.sizes.push({
         width,
         height,
-        url: `https://api.logohub.dev/v1/logos/${id}/${versionName}-${width}x${height}.png`
+        url: `${req.protocol}://${req.get('host')}/v1/logos/${id}/${versionName}-${width}x${height}.png`
       });
     }
     
@@ -237,7 +242,7 @@ app.get('/v1/logos/:id/:file', async (req, res) => {
     const color = req.query.color;
     const size = req.query.size;
     
-    const logoDir = path.join(__dirname, '../logos', id);
+    const logoDir = path.join(process.cwd(), 'logos', id);
     
     // Check if directory exists
     try {
@@ -310,7 +315,12 @@ app.get('/v1/logos/:id/:file', async (req, res) => {
   }
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`LogoHub API server running on port ${port}`);
-}); 
+// For Vercel serverless functions, export the app
+module.exports = app;
+
+// For local development
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`LogoHub API server running on port ${port}`);
+  });
+} 
