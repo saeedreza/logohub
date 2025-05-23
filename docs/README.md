@@ -4,9 +4,9 @@
 
 ## Quick Links
 
-- **Live API**: https://logohub-3ic4eum44-refactco.vercel.app/api/v1
+- **Live API**: https://logohub.dev/api/v1
 - **GitHub Repository**: https://github.com/saeedreza/logohub
-- **API Health Check**: https://logohub-3ic4eum44-refactco.vercel.app/api/health
+- **API Health Check**: https://logohub.dev/api/health
 
 ## Features
 
@@ -20,10 +20,10 @@
 
 ```bash
 # Get a logo in PNG format (64x64)
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.png&size=64"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.png&size=64"
 
 # Get a logo with custom color (red)
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
 ```
 
 ---

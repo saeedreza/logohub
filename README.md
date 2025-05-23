@@ -2,7 +2,7 @@
 
 **🚀 An open-source brand logo repository service for front-end developers**
 
-[![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://logohub-3ic4eum44-refactco.vercel.app/api/health)
+[![API Status](https://img.shields.io/badge/API-Live-brightgreen)](https://logohub.dev/api/health)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -22,28 +22,28 @@ LogoHub provides front-end developers with instant access to company logos in mu
 
 ## 🚀 Live API
 
-**Base URL**: `https://logohub-3ic4eum44-refactco.vercel.app/api/v1`
+**Base URL**: `https://logohub.dev/api/v1`
 
 ### Quick Examples
 
 ```bash
 # Get all available logos
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos"
+curl "https://logohub.dev/api/v1/logos"
 
 # Get logo metadata
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company"
+curl "https://logohub.dev/api/v1/logos/sample-company"
 
 # SVG with original colors
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.svg"
 
 # SVG with custom color (red)
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ff0000"
 
 # PNG conversion (64x64)
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.png&size=64"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.png&size=64"
 
 # WebP conversion (128x128)  
-curl "https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.webp&size=128"
+curl "https://logohub.dev/api/v1/logos/sample-company?file=standard.webp&size=128"
 ```
 
 ## 📖 API Documentation
@@ -145,12 +145,12 @@ logohub/
 ### JavaScript/React
 ```javascript
 // Get logo metadata
-const response = await fetch('https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company');
+const response = await fetch('https://logohub.dev/api/v1/logos/sample-company');
 const logoData = await response.json();
 
 // Use in React component
 <img 
-  src="https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.png&size=64"
+  src="https://logohub.dev/api/v1/logos/sample-company?file=standard.png&size=64"
   alt="Company Logo"
   width="64"
   height="64"
@@ -160,14 +160,14 @@ const logoData = await response.json();
 ### HTML
 ```html
 <!-- SVG with custom color -->
-<img src="https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg&color=ff0000" 
+<img src="https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ff0000" 
      alt="Company Logo" />
 
 <!-- WebP for modern browsers -->
 <picture>
-  <source srcset="https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.webp&size=128" 
+  <source srcset="https://logohub.dev/api/v1/logos/sample-company?file=standard.webp&size=128" 
           type="image/webp">
-  <img src="https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.png&size=128" 
+  <img src="https://logohub.dev/api/v1/logos/sample-company?file=standard.png&size=128" 
        alt="Company Logo">
 </picture>
 ```
@@ -175,7 +175,7 @@ const logoData = await response.json();
 ### CSS
 ```css
 .company-logo {
-  background-image: url('https://logohub-3ic4eum44-refactco.vercel.app/api/v1/logos/sample-company?file=standard.svg&color=ffffff');
+  background-image: url('https://logohub.dev/api/v1/logos/sample-company?file=standard.svg&color=ffffff');
   width: 200px;
   height: 200px;
   background-size: contain;
@@ -212,6 +212,7 @@ We welcome contributions! Please see our [Contributing Guidelines](./guidelines/
 - [x] SVG to PNG/WebP conversion
 - [x] Color customization
 - [x] Vercel deployment
+- [x] Custom domain setup
 - [ ] Framework-specific packages (React, Vue, Angular)
 - [ ] Logo optimization tools
 - [ ] Community submission portal
@@ -224,7 +225,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- **API Base**: https://logohub-3ic4eum44-refactco.vercel.app/api/v1
+- **API Base**: https://logohub.dev/api/v1
 - **Documentation**: https://saeedreza.github.io/logohub/
 - **GitHub Repository**: https://github.com/saeedreza/logohub
 - **Issues & Feature Requests**: https://github.com/saeedreza/logohub/issues
