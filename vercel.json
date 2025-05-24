@@ -1,15 +1,24 @@
 {
+  "version": 2,
   "buildCommand": "npm run website:build",
   "outputDirectory": "docs/.vitepress/dist",
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/index.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 } 
