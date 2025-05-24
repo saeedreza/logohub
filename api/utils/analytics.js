@@ -1,6 +1,6 @@
 /**
  * LogoHub Analytics Utility
- * 
+ *
  * Tracks API usage, logo views, downloads, searches, and errors.
  * Uses Vercel Analytics in production, console logging in development.
  * All data is sanitized to protect user privacy.
@@ -15,14 +15,14 @@ class LogoHubAnalytics {
   constructor() {
     // Only enable analytics in production to avoid dev noise
     this.enabled = process.env.NODE_ENV === 'production';
-    
+
     // Define all trackable event types
     this.events = {
-      API_CALL: 'api_call',           // General API endpoint calls
-      LOGO_VIEW: 'logo_view',         // Logo metadata or file requests
+      API_CALL: 'api_call', // General API endpoint calls
+      LOGO_VIEW: 'logo_view', // Logo metadata or file requests
       LOGO_DOWNLOAD: 'logo_download', // Actual file downloads
-      SEARCH_QUERY: 'search_query',   // Search operations
-      ERROR: 'api_error'              // API errors for monitoring
+      SEARCH_QUERY: 'search_query', // Search operations
+      ERROR: 'api_error', // API errors for monitoring
     };
   }
 
@@ -41,7 +41,7 @@ class LogoHubAnalytics {
     try {
       await track(event, {
         timestamp: new Date().toISOString(),
-        ...properties
+        ...properties,
       });
     } catch (error) {
       // Don't let analytics failures break the API
@@ -58,14 +58,14 @@ class LogoHubAnalytics {
   async trackApiCall(req, endpoint, metadata = {}) {
     const userAgent = req.headers['user-agent'] || 'unknown';
     const referer = req.headers.referer || req.headers.referrer || 'direct';
-    
+
     await this.trackEvent(this.events.API_CALL, {
       endpoint,
       method: req.method,
       userAgent: this.sanitizeUserAgent(userAgent),
       referer: this.sanitizeDomain(referer),
       query: this.sanitizeQuery(req.query),
-      ...metadata
+      ...metadata,
     });
   }
 
@@ -83,7 +83,7 @@ class LogoHubAnalytics {
       color: metadata.color,
       variant: metadata.variant || 'standard',
       userAgent: this.sanitizeUserAgent(req.headers['user-agent'] || 'unknown'),
-      referer: this.sanitizeDomain(req.headers.referer || 'direct')
+      referer: this.sanitizeDomain(req.headers.referer || 'direct'),
     });
   }
 
@@ -101,7 +101,7 @@ class LogoHubAnalytics {
       color: metadata.color,
       fileSize: metadata.fileSize,
       conversionTime: metadata.conversionTime,
-      userAgent: this.sanitizeUserAgent(req.headers['user-agent'] || 'unknown')
+      userAgent: this.sanitizeUserAgent(req.headers['user-agent'] || 'unknown'),
     });
   }
 
@@ -116,7 +116,7 @@ class LogoHubAnalytics {
       query: this.sanitizeSearchQuery(query),
       resultsCount: metadata.resultsCount || 0,
       filters: metadata.filters || {},
-      userAgent: this.sanitizeUserAgent(req.headers['user-agent'] || 'unknown')
+      userAgent: this.sanitizeUserAgent(req.headers['user-agent'] || 'unknown'),
     });
   }
 
@@ -131,11 +131,9 @@ class LogoHubAnalytics {
       errorMessage: error.message?.substring(0, 100) || 'No message', // Truncate long messages
       statusCode: context.statusCode || 500,
       endpoint: context.endpoint || 'unknown',
-      ...context
+      ...context,
     });
   }
-
-
 
   // === DATA SANITIZATION METHODS ===
   // These methods clean data to protect user privacy while preserving useful analytics
@@ -180,7 +178,7 @@ class LogoHubAnalytics {
     const sanitized = {};
     // Whitelist of safe query parameters to track
     const allowedParams = ['page', 'limit', 'format', 'size', 'color'];
-    
+
     for (const [key, value] of Object.entries(query)) {
       if (allowedParams.includes(key)) {
         sanitized[key] = value;
@@ -197,10 +195,11 @@ class LogoHubAnalytics {
   sanitizeSearchQuery(query) {
     if (typeof query !== 'string') return 'non-string';
     // Limit length and remove special characters that might contain sensitive data
-    return query.substring(0, 50).toLowerCase().replace(/[^\w\s-]/g, '');
+    return query
+      .substring(0, 50)
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '');
   }
-
-
 
   /**
    * Get current analytics configuration for admin/monitoring
@@ -210,7 +209,7 @@ class LogoHubAnalytics {
     return {
       analyticsEnabled: this.enabled,
       environment: process.env.NODE_ENV || 'development',
-      trackingEvents: Object.values(this.events)
+      trackingEvents: Object.values(this.events),
     };
   }
 }
@@ -218,4 +217,4 @@ class LogoHubAnalytics {
 // Create singleton instance for use across the application
 const analytics = new LogoHubAnalytics();
 
-module.exports = { analytics, LogoHubAnalytics }; 
+module.exports = { analytics, LogoHubAnalytics };

@@ -4,10 +4,7 @@
       "id": "adobe",
       "name": "Adobe",
       "website": "https://adobe.com",
-      "colors": [
-        "#FA0F00",
-        "#000000"
-      ],
+      "colors": ["#FA0F00", "#000000"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -17,10 +14,7 @@
       "id": "airtable",
       "name": "Airtable",
       "website": "https://airtable.com",
-      "colors": [
-        "#FFBF00",
-        "#26B5F8"
-      ],
+      "colors": ["#FFBF00", "#26B5F8"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.728Z",
@@ -30,10 +24,7 @@
       "id": "angular",
       "name": "Angular",
       "website": "https://angular.com",
-      "colors": [
-        "#E40035",
-        "#F60A48"
-      ],
+      "colors": ["#E40035", "#F60A48"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -43,10 +34,7 @@
       "id": "anthropic",
       "name": "Anthropic",
       "website": "https://anthropic.com",
-      "colors": [
-        "#181818",
-        "#666666"
-      ],
+      "colors": ["#181818", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.725Z",
@@ -56,10 +44,7 @@
       "id": "apple",
       "name": "Apple",
       "website": "https://apple.com",
-      "colors": [
-        "#000000",
-        "#FFFFFF"
-      ],
+      "colors": ["#000000", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -69,10 +54,7 @@
       "id": "aws",
       "name": "AWS",
       "website": "https://aws.amazon.com",
-      "colors": [
-        "#FF9900",
-        "#252F3E"
-      ],
+      "colors": ["#FF9900", "#252F3E"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -82,10 +64,7 @@
       "id": "bluesky",
       "name": "Bluesky",
       "website": "https://bsky.app",
-      "colors": [
-        "#1185FE",
-        "#666666"
-      ],
+      "colors": ["#1185FE", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.731Z",
@@ -125,10 +104,7 @@
       "id": "datadog",
       "name": "Datadog",
       "website": "https://datadoghq.com",
-      "colors": [
-        "#632CA6",
-        "#666666"
-      ],
+      "colors": ["#632CA6", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.730Z",
@@ -148,10 +124,7 @@
       "id": "discord",
       "name": "Discord",
       "website": "https://discord.com",
-      "colors": [
-        "#5865F2",
-        "#000000"
-      ],
+      "colors": ["#5865F2", "#000000"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -161,10 +134,7 @@
       "id": "docker",
       "name": "Docker",
       "website": "https://docker.com",
-      "colors": [
-        "#2396ED",
-        "#666666"
-      ],
+      "colors": ["#2396ED", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -174,10 +144,7 @@
       "id": "figma",
       "name": "Figma",
       "website": "https://figma.com",
-      "colors": [
-        "#0ACF83",
-        "#A259FF"
-      ],
+      "colors": ["#0ACF83", "#A259FF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -187,9 +154,7 @@
       "id": "fly-io",
       "name": "Fly.io",
       "website": "https://fly.io",
-      "colors": [
-        "#666666"
-      ],
+      "colors": ["#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.727Z",
@@ -209,10 +174,7 @@
       "id": "github",
       "name": "GitHub",
       "website": "https://github.com",
-      "colors": [
-        "#161614",
-        "#FFFFFF"
-      ],
+      "colors": ["#161614", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -222,10 +184,7 @@
       "id": "gitlab",
       "name": "GitLab",
       "website": "https://gitlab.com",
-      "colors": [
-        "#E24329",
-        "#FC6D26"
-      ],
+      "colors": ["#E24329", "#FC6D26"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -235,10 +194,7 @@
       "id": "google",
       "name": "Google",
       "website": "https://google.com",
-      "colors": [
-        "#4285F4",
-        "#34A853"
-      ],
+      "colors": ["#4285F4", "#34A853"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -248,9 +204,7 @@
       "id": "height",
       "name": "Height",
       "website": "https://height.app",
-      "colors": [
-        "#666666"
-      ],
+      "colors": ["#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.728Z",
@@ -260,10 +214,7 @@
       "id": "insomnia",
       "name": "Insomnia",
       "website": "https://insomnia.rest",
-      "colors": [
-        "#7400E1",
-        "#4000BF"
-      ],
+      "colors": ["#7400E1", "#4000BF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.728Z",
@@ -273,10 +224,7 @@
       "id": "kubernetes",
       "name": "Kubernetes",
       "website": "https://kubernetes.com",
-      "colors": [
-        "#326DE6",
-        "#FFFFFF"
-      ],
+      "colors": ["#326DE6", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -286,10 +234,7 @@
       "id": "linear",
       "name": "Linear",
       "website": "https://linear.com",
-      "colors": [
-        "#222326",
-        "#666666"
-      ],
+      "colors": ["#222326", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -299,10 +244,7 @@
       "id": "mattermost",
       "name": "Mattermost",
       "website": "https://mattermost.com",
-      "colors": [
-        "#0058CC",
-        "#666666"
-      ],
+      "colors": ["#0058CC", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.730Z",
@@ -312,10 +254,7 @@
       "id": "meta",
       "name": "Meta",
       "website": "https://meta.com",
-      "colors": [
-        "#0064E1",
-        "#0082FB"
-      ],
+      "colors": ["#0064E1", "#0082FB"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -325,10 +264,7 @@
       "id": "microsoft",
       "name": "Microsoft",
       "website": "https://microsoft.com",
-      "colors": [
-        "#F1511B",
-        "#00ADEF"
-      ],
+      "colors": ["#F1511B", "#00ADEF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -338,10 +274,7 @@
       "id": "mixpanel",
       "name": "Mixpanel",
       "website": "https://mixpanel.com",
-      "colors": [
-        "#33547D",
-        "#666666"
-      ],
+      "colors": ["#33547D", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.729Z",
@@ -351,10 +284,7 @@
       "id": "netflix",
       "name": "Netflix",
       "website": "https://netflix.com",
-      "colors": [
-        "#DB202C",
-        "#000000"
-      ],
+      "colors": ["#DB202C", "#000000"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -364,10 +294,7 @@
       "id": "node.js",
       "name": "Node.js",
       "website": "https://node.js.com",
-      "colors": [
-        "#539E43",
-        "#666666"
-      ],
+      "colors": ["#539E43", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -377,10 +304,7 @@
       "id": "notion",
       "name": "Notion",
       "website": "https://notion.so",
-      "colors": [
-        "#000000",
-        "#FFFFFF"
-      ],
+      "colors": ["#000000", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -390,10 +314,7 @@
       "id": "obsidian",
       "name": "Obsidian",
       "website": "https://obsidian.md",
-      "colors": [
-        "#8060D3",
-        "#666666"
-      ],
+      "colors": ["#8060D3", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.728Z",
@@ -403,10 +324,7 @@
       "id": "openai",
       "name": "OpenAI",
       "website": "https://openai.com",
-      "colors": [
-        "#000000",
-        "#666666"
-      ],
+      "colors": ["#000000", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.724Z",
@@ -416,10 +334,7 @@
       "id": "paypal",
       "name": "PayPal",
       "website": "https://paypal.com",
-      "colors": [
-        "#27346A",
-        "#2790C3"
-      ],
+      "colors": ["#27346A", "#2790C3"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.726Z",
@@ -439,10 +354,7 @@
       "id": "postgresql",
       "name": "PostgreSQL",
       "website": "https://postgresql.com",
-      "colors": [
-        "#000000",
-        "#336791"
-      ],
+      "colors": ["#000000", "#336791"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -452,10 +364,7 @@
       "id": "postman",
       "name": "Postman",
       "website": "https://postman.com",
-      "colors": [
-        "#FF6C37",
-        "#FFFFFF"
-      ],
+      "colors": ["#FF6C37", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.727Z",
@@ -475,10 +384,7 @@
       "id": "react",
       "name": "React",
       "website": "https://react.com",
-      "colors": [
-        "#00D8FF",
-        "#666666"
-      ],
+      "colors": ["#00D8FF", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -498,10 +404,7 @@
       "id": "sample-company",
       "name": "Sample Company",
       "website": "https://samplecompany.com",
-      "colors": [
-        "#0066cc",
-        "#ff9900"
-      ],
+      "colors": ["#0066cc", "#ff9900"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-15",
@@ -511,10 +414,7 @@
       "id": "segment",
       "name": "Segment",
       "website": "https://segment.com",
-      "colors": [
-        "#4FB58B",
-        "#666666"
-      ],
+      "colors": ["#4FB58B", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.729Z",
@@ -524,10 +424,7 @@
       "id": "sentry",
       "name": "Sentry",
       "website": "https://sentry.io",
-      "colors": [
-        "#362D59",
-        "#666666"
-      ],
+      "colors": ["#362D59", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.729Z",
@@ -547,10 +444,7 @@
       "id": "slack",
       "name": "Slack",
       "website": "https://slack.com",
-      "colors": [
-        "#E01E5A",
-        "#36C5F0"
-      ],
+      "colors": ["#E01E5A", "#36C5F0"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -560,10 +454,7 @@
       "id": "spotify",
       "name": "Spotify",
       "website": "https://spotify.com",
-      "colors": [
-        "#1ED760",
-        "#000000"
-      ],
+      "colors": ["#1ED760", "#000000"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -583,10 +474,7 @@
       "id": "stripe",
       "name": "Stripe",
       "website": "https://stripe.com",
-      "colors": [
-        "#635BFF",
-        "#666666"
-      ],
+      "colors": ["#635BFF", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23",
@@ -606,10 +494,7 @@
       "id": "tailwind-css",
       "name": "Tailwind CSS",
       "website": "https://tailwindcss.com",
-      "colors": [
-        "#2298BD",
-        "#0ED7B5"
-      ],
+      "colors": ["#2298BD", "#0ED7B5"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -619,10 +504,7 @@
       "id": "typescript",
       "name": "TypeScript",
       "website": "https://typescript.com",
-      "colors": [
-        "#3178C6",
-        "#FFFFFF"
-      ],
+      "colors": ["#3178C6", "#FFFFFF"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -642,10 +524,7 @@
       "id": "vercel",
       "name": "Vercel",
       "website": "https://vercel.com",
-      "colors": [
-        "#000000",
-        "#666666"
-      ],
+      "colors": ["#000000", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -655,10 +534,7 @@
       "id": "vue.js",
       "name": "Vue.js",
       "website": "https://vue.js.com",
-      "colors": [
-        "#41B883",
-        "#35495E"
-      ],
+      "colors": ["#41B883", "#35495E"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-22",
@@ -668,10 +544,7 @@
       "id": "zoom",
       "name": "Zoom",
       "website": "https://zoom.us",
-      "colors": [
-        "#0B5CFF",
-        "#666666"
-      ],
+      "colors": ["#0B5CFF", "#666666"],
       "hasSymbol": false,
       "hasMainSvg": true,
       "created": "2025-05-23T06:15:51.730Z",

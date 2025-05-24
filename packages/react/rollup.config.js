@@ -20,4 +20,4 @@ export default {
     }),
   ],
   external: ['react', '@logohub/core'],
-}; 
+};

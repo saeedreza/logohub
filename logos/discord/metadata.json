@@ -2,10 +2,7 @@
   "name": "discord",
   "title": "Discord",
   "website": "https://discord.com",
-  "colors": [
-    "#5865F2",
-    "#000000"
-  ],
+  "colors": ["#5865F2", "#000000"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

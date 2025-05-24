@@ -2,10 +2,7 @@
   "name": "gitlab",
   "title": "GitLab",
   "website": "https://gitlab.com",
-  "colors": [
-    "#E24329",
-    "#FC6D26"
-  ],
+  "colors": ["#E24329", "#FC6D26"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

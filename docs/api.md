@@ -17,17 +17,20 @@ GET /logos
 ```
 
 **Query Parameters:**
+
 - `category` - Filter by category (e.g., `ai`, `fintech`, `cloud`)
 - `search` - Search by name or description
 - `limit` - Number of results to return (default: 50)
 - `offset` - Number of results to skip (default: 0)
 
 **Example:**
+
 ```bash
 curl https://api.logohub.dev/v1/logos?category=ai&search=openai
 ```
 
 **Response:**
+
 ```json
 {
   "logos": [
@@ -62,11 +65,13 @@ GET /logos/{id}
 ```
 
 **Example:**
+
 ```bash
 curl https://api.logohub.dev/v1/logos/stripe
 ```
 
 **Response:**
+
 ```json
 {
   "id": "stripe",
@@ -96,16 +101,10 @@ GET /categories
 ```
 
 **Response:**
+
 ```json
 {
-  "categories": [
-    "ai",
-    "analytics", 
-    "cloud",
-    "design",
-    "fintech",
-    "gaming"
-  ]
+  "categories": ["ai", "analytics", "cloud", "design", "fintech", "gaming"]
 }
 ```
 
@@ -118,6 +117,7 @@ https://logohub.dev/logos/{id}/{id}.svg
 ```
 
 **Examples:**
+
 - `https://logohub.dev/logos/openai/openai.svg`
 - `https://logohub.dev/logos/stripe/stripe.svg`
 - `https://logohub.dev/logos/anthropic/anthropic.svg`
@@ -146,4 +146,4 @@ https://logohub.dev/logos/{id}/{id}.svg
 - `400` - Bad Request (invalid parameters)
 - `404` - Logo not found
 - `429` - Rate limit exceeded
-- `500` - Internal server error 
+- `500` - Internal server error

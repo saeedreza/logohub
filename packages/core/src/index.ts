@@ -14,7 +14,9 @@ export type {
 export { LogoHubClient } from './client';
 
 // Export utilities
-export const LOGO_SIZES: readonly number[] = [16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256, 512];
+export const LOGO_SIZES: readonly number[] = [
+  16, 20, 24, 32, 40, 48, 56, 64, 80, 96, 128, 256, 512,
+];
 
 export const LOGO_FORMATS = {
   SVG: 'svg' as const,
@@ -28,7 +30,10 @@ export const validateLogoId = (id: string): boolean => {
 };
 
 export const formatLogoId = (name: string): string => {
-  return name.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/^-+|-+$/g, '');
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9.]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 };
 
 export const isValidLogoSize = (size: number): boolean => {
@@ -36,7 +41,7 @@ export const isValidLogoSize = (size: number): boolean => {
 };
 
 export const getClosestLogoSize = (targetSize: number): number => {
-  return LOGO_SIZES.reduce((prev, curr) => 
+  return LOGO_SIZES.reduce((prev, curr) =>
     Math.abs(curr - targetSize) < Math.abs(prev - targetSize) ? curr : prev
   );
-}; 
+};

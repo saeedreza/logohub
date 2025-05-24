@@ -2,10 +2,7 @@
   "name": "bluesky",
   "title": "Bluesky",
   "website": "https://bsky.app",
-  "colors": [
-    "#1185FE",
-    "#666666"
-  ],
+  "colors": ["#1185FE", "#666666"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-23T06:15:51.731Z",

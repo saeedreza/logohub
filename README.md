@@ -43,11 +43,11 @@ curl "https://logohub.dev/api/v1/logos/google?format=webp&size=64&color=333333"
 
 ### Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/v1/logos` | GET | List all available logos |
-| `/v1/logos/{id}` | GET | Get individual logo |
-| `/health` | GET | API health check |
+| Endpoint         | Method | Description              |
+| ---------------- | ------ | ------------------------ |
+| `/v1/logos`      | GET    | List all available logos |
+| `/v1/logos/{id}` | GET    | Get individual logo      |
+| `/health`        | GET    | API health check         |
 
 ### Parameters
 
@@ -96,12 +96,13 @@ npm run website:dev
 ## 🌟 Usage Examples
 
 ### JavaScript/React
+
 ```javascript
 // Use directly in React
-<img 
+<img
   src="https://logohub.dev/api/v1/logos/google?format=png&size=128"
   alt="Google Logo"
-/>
+/>;
 
 // Fetch logo data
 const response = await fetch('https://logohub.dev/api/v1/logos/google');
@@ -109,15 +110,22 @@ const svgContent = await response.text();
 ```
 
 ### HTML
+
 ```html
 <!-- SVG (default) -->
 <img src="https://logohub.dev/api/v1/logos/google" alt="Google Logo" />
 
 <!-- PNG with custom size -->
-<img src="https://logohub.dev/api/v1/logos/google?format=png&size=64" alt="Google Logo" />
+<img
+  src="https://logohub.dev/api/v1/logos/google?format=png&size=64"
+  alt="Google Logo"
+/>
 
 <!-- Custom color -->
-<img src="https://logohub.dev/api/v1/logos/google?color=ff0000" alt="Google Logo in Red" />
+<img
+  src="https://logohub.dev/api/v1/logos/google?color=ff0000"
+  alt="Google Logo in Red"
+/>
 ```
 
 ## 🚀 Deployment
@@ -133,7 +141,6 @@ Deploy your own instance:
 3. Test locally with `npm start`
 4. Submit a pull request
 
-
 ## 📄 License
 
 MIT License - see [LICENSE](LICENSE) file for details.
@@ -146,4 +153,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## ⚖️ Legal Notice
 
-All logos remain the property of their respective owners. Please ensure you have the right to use any logo in your project and comply with the respective company's brand guidelines. 
+All logos remain the property of their respective owners. Please ensure you have the right to use any logo in your project and comply with the respective company's brand guidelines.

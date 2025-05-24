@@ -2,10 +2,7 @@
   "name": "postgresql",
   "title": "PostgreSQL",
   "website": "https://postgresql.com",
-  "colors": [
-    "#000000",
-    "#336791"
-  ],
+  "colors": ["#000000", "#336791"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

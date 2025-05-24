@@ -2,10 +2,7 @@
   "name": "meta",
   "title": "Meta",
   "website": "https://meta.com",
-  "colors": [
-    "#0064E1",
-    "#0082FB"
-  ],
+  "colors": ["#0064E1", "#0082FB"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

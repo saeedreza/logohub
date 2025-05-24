@@ -2,10 +2,7 @@
   "name": "angular",
   "title": "Angular",
   "website": "https://angular.com",
-  "colors": [
-    "#E40035",
-    "#F60A48"
-  ],
+  "colors": ["#E40035", "#F60A48"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

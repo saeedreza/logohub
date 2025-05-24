@@ -9,9 +9,24 @@ LogoHub is an open-source logo repository that provides high-quality SVG logos f
 The simplest way to use LogoHub is via direct CDN links:
 
 ```html
-<img src="https://logohub.dev/logos/openai/openai.svg" alt="OpenAI" width="64" height="64" />
-<img src="https://logohub.dev/logos/stripe/stripe.svg" alt="Stripe" width="64" height="64" />
-<img src="https://logohub.dev/logos/anthropic/anthropic.svg" alt="Anthropic" width="64" height="64" />
+<img
+  src="https://logohub.dev/logos/openai/openai.svg"
+  alt="OpenAI"
+  width="64"
+  height="64"
+/>
+<img
+  src="https://logohub.dev/logos/stripe/stripe.svg"
+  alt="Stripe"
+  width="64"
+  height="64"
+/>
+<img
+  src="https://logohub.dev/logos/anthropic/anthropic.svg"
+  alt="Anthropic"
+  width="64"
+  height="64"
+/>
 ```
 
 ### API Usage
@@ -24,12 +39,14 @@ const response = await fetch('https://api.logohub.dev/v1/logos');
 const data = await response.json();
 
 // Get specific logo
-const logo = await fetch('https://api.logohub.dev/v1/logos/openai')
-  .then(res => res.json());
+const logo = await fetch('https://api.logohub.dev/v1/logos/openai').then(res =>
+  res.json()
+);
 
 // Search logos
-const results = await fetch('https://api.logohub.dev/v1/logos?category=ai&search=openai')
-  .then(res => res.json());
+const results = await fetch(
+  'https://api.logohub.dev/v1/logos?category=ai&search=openai'
+).then(res => res.json());
 ```
 
 ### React Component (Coming Soon)
@@ -53,7 +70,7 @@ function App() {
 Our logos are organized into the following categories:
 
 - **AI** - OpenAI, Anthropic, Hugging Face
-- **Analytics** - Mixpanel, Segment, Datadog  
+- **Analytics** - Mixpanel, Segment, Datadog
 - **Cloud** - DigitalOcean, Cloudflare, Supabase
 - **Design** - Canva, Framer, Linear
 - **DevTools** - Postman, Insomnia, Railway
@@ -83,7 +100,7 @@ LogoHub maintains high quality standards:
 ✅ **Optimized file size** - Compressed and cleaned  
 ✅ **Consistent styling** - Standardized colors and dimensions  
 ✅ **Official sources** - Sourced from official brand resources  
-✅ **Regular updates** - Kept current with brand changes  
+✅ **Regular updates** - Kept current with brand changes
 
 ## License & Usage
 
@@ -121,10 +138,20 @@ For IE11 support, use PNG fallbacks or polyfills.
 
 ```html
 <!-- Preload critical logos -->
-<link rel="preload" href="https://logohub.dev/logos/openai/openai.svg" as="image" type="image/svg+xml">
+<link
+  rel="preload"
+  href="https://logohub.dev/logos/openai/openai.svg"
+  as="image"
+  type="image/svg+xml"
+/>
 
 <!-- Lazy load with intersection observer -->
-<img src="placeholder.svg" data-src="https://logohub.dev/logos/stripe/stripe.svg" class="lazy" alt="Stripe">
+<img
+  src="placeholder.svg"
+  data-src="https://logohub.dev/logos/stripe/stripe.svg"
+  class="lazy"
+  alt="Stripe"
+/>
 ```
 
-Ready to explore? [Browse all logos →](/logos) 
+Ready to explore? [Browse all logos →](/logos)

@@ -2,10 +2,7 @@
   "name": "tailwind-css",
   "title": "Tailwind CSS",
   "website": "https://tailwindcss.com",
-  "colors": [
-    "#2298BD",
-    "#0ED7B5"
-  ],
+  "colors": ["#2298BD", "#0ED7B5"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

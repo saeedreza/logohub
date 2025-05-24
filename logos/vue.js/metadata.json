@@ -2,10 +2,7 @@
   "name": "vue.js",
   "title": "Vue.js",
   "website": "https://vue.js.com",
-  "colors": [
-    "#41B883",
-    "#35495E"
-  ],
+  "colors": ["#41B883", "#35495E"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

@@ -2,10 +2,7 @@
   "name": "airtable",
   "title": "Airtable",
   "website": "https://airtable.com",
-  "colors": [
-    "#FFBF00",
-    "#26B5F8"
-  ],
+  "colors": ["#FFBF00", "#26B5F8"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-23T06:15:51.728Z",

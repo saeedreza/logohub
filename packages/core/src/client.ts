@@ -1,9 +1,9 @@
-import type { 
-  LogoHubConfig, 
-  LogoListResponse, 
+import type {
+  LogoHubConfig,
+  LogoListResponse,
   LogoDetailResponse,
   LogoConfig,
-  LogoSize 
+  LogoSize,
 } from './types';
 
 export class LogoHubClient {
@@ -21,20 +21,24 @@ export class LogoHubClient {
   /**
    * Get list of all available logos
    */
-  async getLogos(params: {
-    page?: number;
-    limit?: number;
-    format?: string;
-    search?: string;
-  } = {}): Promise<LogoListResponse> {
+  async getLogos(
+    params: {
+      page?: number;
+      limit?: number;
+      format?: string;
+      search?: string;
+    } = {}
+  ): Promise<LogoListResponse> {
     const { page = 1, limit = 20, format, search } = params;
-    const url = new URL(`${this.config.baseUrl}/api/${this.config.apiVersion}/logos`);
-    
+    const url = new URL(
+      `${this.config.baseUrl}/api/${this.config.apiVersion}/logos`
+    );
+
     url.searchParams.set('page', page.toString());
     url.searchParams.set('limit', limit.toString());
     if (format) url.searchParams.set('format', format);
     if (search) url.searchParams.set('search', search);
-    
+
     try {
       const response = await fetch(url.toString());
       if (!response.ok) {
@@ -42,7 +46,9 @@ export class LogoHubClient {
       }
       return await response.json();
     } catch (error) {
-      throw new Error(`Failed to fetch logos: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(
+        `Failed to fetch logos: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
     }
   }
 
@@ -51,7 +57,7 @@ export class LogoHubClient {
    */
   async getLogo(id: string): Promise<LogoDetailResponse> {
     const url = `${this.config.baseUrl}/api/${this.config.apiVersion}/logos/${id}`;
-    
+
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -59,7 +65,9 @@ export class LogoHubClient {
       }
       return await response.json();
     } catch (error) {
-      throw new Error(`Failed to fetch logo "${id}": ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(
+        `Failed to fetch logo "${id}": ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
     }
   }
 
@@ -71,7 +79,7 @@ export class LogoHubClient {
       id,
       format = this.config.defaultFormat,
       size = this.config.defaultSize,
-      color
+      color,
     } = config;
 
     const filename = `${id}.${format}`;
@@ -96,7 +104,7 @@ export class LogoHubClient {
    */
   async downloadLogo(config: LogoConfig): Promise<Blob> {
     const url = this.getLogoUrl(config);
-    
+
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -104,7 +112,9 @@ export class LogoHubClient {
       }
       return await response.blob();
     } catch (error) {
-      throw new Error(`Failed to download logo: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(
+        `Failed to download logo: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
     }
   }
 
@@ -116,7 +126,8 @@ export class LogoHubClient {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result as string);
-      reader.onerror = () => reject(new Error('Failed to convert blob to data URL'));
+      reader.onerror = () =>
+        reject(new Error('Failed to convert blob to data URL'));
       reader.readAsDataURL(blob);
     });
   }
@@ -153,4 +164,4 @@ export class LogoHubClient {
   updateConfig(newConfig: Partial<LogoHubConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
-} 
+}

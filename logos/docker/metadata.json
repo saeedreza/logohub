@@ -2,10 +2,7 @@
   "name": "docker",
   "title": "Docker",
   "website": "https://docker.com",
-  "colors": [
-    "#2396ED",
-    "#666666"
-  ],
+  "colors": ["#2396ED", "#666666"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

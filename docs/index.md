@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "LogoHub"
-  text: "Open-source Logo Repository"
-  tagline: "High-quality SVG logos for your next project"
+  name: 'LogoHub'
+  text: 'Open-source Logo Repository'
+  tagline: 'High-quality SVG logos for your next project'
   image:
     src: /logo.svg
     alt: LogoHub
@@ -20,23 +20,23 @@ features:
   - icon: 🎨
     title: High-Quality SVGs
     details: Carefully curated collection of optimized SVG logos from top brands and companies.
-  
+
   - icon: 🔍
     title: Easy to Search
     details: Find logos by category, brand name, or tags with our powerful search functionality.
-  
+
   - icon: ⚡
     title: Developer Friendly
     details: Simple API, React components, and multiple download formats for seamless integration.
-  
+
   - icon: 📦
     title: Package Support
     details: Available as NPM packages for React, Vue, and vanilla JavaScript projects.
-  
+
   - icon: 🆓
     title: Completely Free
     details: Open-source and free to use in your commercial and personal projects.
-  
+
   - icon: 🚀
     title: CDN Delivery
     details: Fast global CDN delivery ensures your logos load quickly anywhere in the world.
@@ -110,4 +110,4 @@ Our logo collection spans across multiple categories:
   ">
     Explore All Logos →
   </a>
-</div> 
+</div>

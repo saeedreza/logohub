@@ -2,10 +2,7 @@
   "name": "sentry",
   "title": "Sentry",
   "website": "https://sentry.io",
-  "colors": [
-    "#362D59",
-    "#666666"
-  ],
+  "colors": ["#362D59", "#666666"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-23T06:15:51.729Z",

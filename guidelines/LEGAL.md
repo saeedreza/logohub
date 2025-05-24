@@ -71,4 +71,4 @@ LogoHub does not guarantee that usage of any logo in the repository is legally p
 - [Fair Use Guidelines](https://www.copyright.gov/fair-use/)
 - [Digital Media Law Project](https://www.dmlp.org/legal-guide/using-trademarks-others)
 
-This document is provided for informational purposes only and does not constitute legal advice. When in doubt about the legality of logo usage, consult a legal professional. 
+This document is provided for informational purposes only and does not constitute legal advice. When in doubt about the legality of logo usage, consult a legal professional.

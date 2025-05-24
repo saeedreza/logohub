@@ -1,0 +1,26 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+
+# 2 space indentation for most files
+[*.{js,ts,tsx,json,yml,yaml,md,vue}]
+indent_style = space
+indent_size = 2
+
+# 4 spaces for Python files (if any)
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Preserve exact formatting for package-lock.json
+[package-lock.json]
+insert_final_newline = false
+trim_trailing_whitespace = false 

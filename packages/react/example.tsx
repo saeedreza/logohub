@@ -1,12 +1,12 @@
 // Example usage of @logohub/react package
 import React from 'react';
-import { 
-  Logo, 
-  LogoGrid, 
-  useLogos, 
-  useLogo, 
+import {
+  Logo,
+  LogoGrid,
+  useLogos,
+  useLogo,
   useLogoUrl,
-  LogoHubClient 
+  LogoHubClient,
 } from '@logohub/react';
 
 // Basic Logo Usage
@@ -24,27 +24,23 @@ export function BasicExample() {
 // Logo Grid Example
 export function GridExample() {
   const techLogos = [
-    'google', 'microsoft', 'apple', 'meta', 
-    'aws', 'github', 'docker', 'react'
+    'google',
+    'microsoft',
+    'apple',
+    'meta',
+    'aws',
+    'github',
+    'docker',
+    'react',
   ];
 
   return (
     <div>
       <h2>Logo Grid</h2>
-      <LogoGrid 
-        logos={techLogos}
-        size={56}
-        columns={4}
-        gap={20}
-      />
+      <LogoGrid logos={techLogos} size={56} columns={4} gap={20} />
 
       <h3>All Available Logos</h3>
-      <LogoGrid 
-        fetchAll
-        variant="monochrome"
-        size={40}
-        columns="auto"
-      />
+      <LogoGrid fetchAll variant="monochrome" size={40} columns="auto" />
     </div>
   );
 }
@@ -53,13 +49,13 @@ export function GridExample() {
 export function HooksExample() {
   const { data: logos, loading, error } = useLogos();
   const { data: googleLogo } = useLogo('google');
-  
+
   const customLogoUrl = useLogoUrl({
     id: 'microsoft',
     variant: 'monochrome',
     format: 'png',
     size: 128,
-    color: '#ff0000'
+    color: '#ff0000',
   });
 
   if (loading) return <div>Loading logos...</div>;
@@ -68,7 +64,7 @@ export function HooksExample() {
   return (
     <div>
       <h2>Advanced Hook Usage</h2>
-      
+
       <h3>All Logos ({logos?.total})</h3>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         {logos?.logos.map(logo => (
@@ -80,9 +76,16 @@ export function HooksExample() {
       {googleLogo && (
         <div>
           <Logo name="google" size={48} />
-          <p><strong>Website:</strong> {googleLogo.metadata.website}</p>
-          <p><strong>Industries:</strong> {googleLogo.metadata.industry.join(', ')}</p>
-          <p><strong>Primary Color:</strong> {googleLogo.colors.primary}</p>
+          <p>
+            <strong>Website:</strong> {googleLogo.metadata.website}
+          </p>
+          <p>
+            <strong>Industries:</strong>{' '}
+            {googleLogo.metadata.industry.join(', ')}
+          </p>
+          <p>
+            <strong>Primary Color:</strong> {googleLogo.colors.primary}
+          </p>
         </div>
       )}
 
@@ -97,7 +100,7 @@ export function CustomClientExample() {
   const customClient = new LogoHubClient({
     baseUrl: 'https://logohub.dev',
     defaultSize: 96,
-    defaultVariant: 'standard'
+    defaultVariant: 'standard',
   });
 
   return (
@@ -114,22 +117,24 @@ export function ErrorHandlingExample() {
   return (
     <div>
       <h2>Error Handling</h2>
-      
+
       <h3>With Custom Fallback</h3>
-      <Logo 
+      <Logo
         name="non-existent-logo"
         fallback={
-          <div style={{ 
-            width: 64, 
-            height: 64, 
-            backgroundColor: '#f3f4f6',
-            border: '2px dashed #d1d5db',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '12px',
-            color: '#6b7280'
-          }}>
+          <div
+            style={{
+              width: 64,
+              height: 64,
+              backgroundColor: '#f3f4f6',
+              border: '2px dashed #d1d5db',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '12px',
+              color: '#6b7280',
+            }}
+          >
             Not Found
           </div>
         }
@@ -146,20 +151,20 @@ export function DemoApp() {
   return (
     <div style={{ padding: 20, fontFamily: 'system-ui' }}>
       <h1>@logohub/react Demo</h1>
-      
+
       <BasicExample />
       <hr />
-      
+
       <GridExample />
       <hr />
-      
+
       <HooksExample />
       <hr />
-      
+
       <CustomClientExample />
       <hr />
-      
+
       <ErrorHandlingExample />
     </div>
   );
-} 
+}

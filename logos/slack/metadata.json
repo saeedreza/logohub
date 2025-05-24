@@ -2,10 +2,7 @@
   "name": "slack",
   "title": "Slack",
   "website": "https://slack.com",
-  "colors": [
-    "#E01E5A",
-    "#36C5F0"
-  ],
+  "colors": ["#E01E5A", "#36C5F0"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

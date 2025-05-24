@@ -2,10 +2,7 @@
   "name": "sample-company",
   "title": "Sample Company",
   "website": "https://samplecompany.com",
-  "colors": [
-    "#0066cc",
-    "#ff9900"
-  ],
+  "colors": ["#0066cc", "#ff9900"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-15",

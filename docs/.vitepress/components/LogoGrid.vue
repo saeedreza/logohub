@@ -48,8 +48,8 @@
         @click="selectLogo(logo)"
       >
         <div class="logo-icon">
-          <img 
-            :src="getLogoUrl(logo.id)" 
+          <img
+            :src="getLogoUrl(logo.id)"
             :alt="logo.name"
             @error="handleImageError"
             loading="lazy"
@@ -58,14 +58,18 @@
         <div class="logo-info">
           <div class="logo-name">{{ logo.name }}</div>
           <div class="logo-colors">
-            <span 
-              v-for="color in (logo.colors || []).slice(0, 3)" 
+            <span
+              v-for="color in (logo.colors || []).slice(0, 3)"
               :key="color"
               class="color-dot"
               :style="{ backgroundColor: color }"
               :title="color"
             ></span>
-            <span v-if="!logo.colors || logo.colors.length === 0" class="no-colors">No colors</span>
+            <span
+              v-if="!logo.colors || logo.colors.length === 0"
+              class="no-colors"
+              >No colors</span
+            >
           </div>
           <div v-if="logo.hasSymbol" class="symbol-badge">Has Symbol</div>
         </div>
@@ -83,33 +87,43 @@
     <div v-if="selectedLogo" class="modal-overlay" @click="selectedLogo = null">
       <div class="modal-content" @click.stop>
         <button class="modal-close" @click="selectedLogo = null">×</button>
-        
+
         <div class="modal-header">
           <div class="modal-logo">
-            <img 
-              :src="getLogoUrl(selectedLogo.id, 128)" 
+            <img
+              :src="getLogoUrl(selectedLogo.id, 128)"
               :alt="selectedLogo.name"
             />
           </div>
           <div class="modal-info">
             <h2>{{ selectedLogo.name }}</h2>
             <p class="modal-website">
-              <a :href="selectedLogo.website" target="_blank">{{ selectedLogo.website }}</a>
+              <a :href="selectedLogo.website" target="_blank">{{
+                selectedLogo.website
+              }}</a>
             </p>
             <div class="modal-meta">
               <div class="modal-colors">
                 <span class="colors-label">Brand Colors:</span>
-                <span 
-                  v-for="color in (selectedLogo.colors || [])" 
+                <span
+                  v-for="color in selectedLogo.colors || []"
                   :key="color"
                   class="color-chip"
                   :style="{ backgroundColor: color }"
                 >
                   {{ color }}
                 </span>
-                <span v-if="!selectedLogo.colors || selectedLogo.colors.length === 0" class="no-colors-modal">No brand colors specified</span>
+                <span
+                  v-if="
+                    !selectedLogo.colors || selectedLogo.colors.length === 0
+                  "
+                  class="no-colors-modal"
+                  >No brand colors specified</span
+                >
               </div>
-              <span v-if="selectedLogo.hasSymbol" class="symbol-badge">Has Symbol Variant</span>
+              <span v-if="selectedLogo.hasSymbol" class="symbol-badge"
+                >Has Symbol Variant</span
+              >
             </div>
           </div>
         </div>
@@ -129,7 +143,10 @@
           >
             Download PNG
           </a>
-          <button @click="copyToClipboard(selectedLogo)" class="btn btn-secondary">
+          <button
+            @click="copyToClipboard(selectedLogo)"
+            class="btn btn-secondary"
+          >
             Copy SVG
           </button>
           <a
@@ -155,15 +172,26 @@
             </div>
             <div class="code-example">
               <label>API with custom color</label>
-              <code>{{ getLogoUrl(selectedLogo.id, null, 'svg', 'ff0000') }}</code>
+              <code>{{
+                getLogoUrl(selectedLogo.id, null, 'svg', 'ff0000')
+              }}</code>
             </div>
             <div class="code-example">
               <label>HTML Image</label>
-              <code>{{ `<img src="${getLogoUrl(selectedLogo.id)}" alt="${selectedLogo.name}" width="64" height="64" />` }}</code>
+              <code
+                >{{ `<img
+                  src="${getLogoUrl(selectedLogo.id)}"
+                  alt="${selectedLogo.name}"
+                  width="64"
+                  height="64"
+                />` }}</code
+              >
             </div>
             <div class="code-example">
               <label>Fetch metadata</label>
-              <code>{{ `fetch('${API_BASE}/logos/${selectedLogo.id}').then(res => res.json())` }}</code>
+              <code>{{
+                `fetch('${API_BASE}/logos/${selectedLogo.id}').then(res => res.json())`
+              }}</code>
             </div>
           </div>
         </div>
@@ -173,88 +201,95 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import logoData from '../data/logos.json'
+import { ref, computed } from 'vue';
+import logoData from '../data/logos.json';
 
 // API Configuration
 // Environment-based URL configuration
 const getBaseUrls = () => {
-  if (typeof window === 'undefined') return { API_BASE: 'https://logohub.dev/api/v1', CDN_BASE: 'https://logohub.dev' }
-  
-  const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  const API_BASE = isDev 
+  if (typeof window === 'undefined')
+    return {
+      API_BASE: 'https://logohub.dev/api/v1',
+      CDN_BASE: 'https://logohub.dev',
+    };
+
+  const isDev =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+  const API_BASE = isDev
     ? import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api/v1'
-    : import.meta.env.VITE_PROD_API_BASE_URL || 'https://logohub.dev/api/v1'
-  
-  const CDN_BASE = isDev 
+    : import.meta.env.VITE_PROD_API_BASE_URL || 'https://logohub.dev/api/v1';
+
+  const CDN_BASE = isDev
     ? import.meta.env.VITE_CDN_BASE_URL || 'http://localhost:3000'
-    : import.meta.env.VITE_PROD_CDN_BASE_URL || 'https://logohub.dev'
-    
-  return { API_BASE, CDN_BASE }
-}
+    : import.meta.env.VITE_PROD_CDN_BASE_URL || 'https://logohub.dev';
 
-const { API_BASE, CDN_BASE } = getBaseUrls()
+  return { API_BASE, CDN_BASE };
+};
 
-const data = ref(logoData)
-const viewMode = ref('grid')
-const selectedLogo = ref(null)
-const searchQuery = ref('')
+const { API_BASE, CDN_BASE } = getBaseUrls();
+
+const data = ref(logoData);
+const viewMode = ref('grid');
+const selectedLogo = ref(null);
+const searchQuery = ref('');
 
 const logos = computed(() => {
-  return data.value?.logos || []
-})
+  return data.value?.logos || [];
+});
 
 const filteredLogos = computed(() => {
   if (!searchQuery.value.trim()) {
-    return logos.value
+    return logos.value;
   }
-  
-  const query = searchQuery.value.toLowerCase().trim()
+
+  const query = searchQuery.value.toLowerCase().trim();
   return logos.value.filter(logo => {
-    const nameMatch = logo.name.toLowerCase().includes(query)
-    const websiteMatch = logo.website && logo.website.toLowerCase().includes(query)
-    const idMatch = logo.id.toLowerCase().includes(query)
-    return nameMatch || websiteMatch || idMatch
-  })
-})
+    const nameMatch = logo.name.toLowerCase().includes(query);
+    const websiteMatch =
+      logo.website && logo.website.toLowerCase().includes(query);
+    const idMatch = logo.id.toLowerCase().includes(query);
+    return nameMatch || websiteMatch || idMatch;
+  });
+});
 
 function getLogoUrl(logoId, size = 64, format = 'svg', color = null) {
-  const params = new URLSearchParams()
-  
-  if (size) params.append('size', size.toString())
-  if (format && format !== 'svg') params.append('format', format)
-  if (color) params.append('color', color)
-  
-  const queryString = params.toString()
-  const baseUrl = `${CDN_BASE}/api/v1/logos/${logoId}`
-  
-  return queryString ? `${baseUrl}?${queryString}` : baseUrl
+  const params = new URLSearchParams();
+
+  if (size) params.append('size', size.toString());
+  if (format && format !== 'svg') params.append('format', format);
+  if (color) params.append('color', color);
+
+  const queryString = params.toString();
+  const baseUrl = `${CDN_BASE}/api/v1/logos/${logoId}`;
+
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
 }
 
 function selectLogo(logo) {
-  selectedLogo.value = logo
+  selectedLogo.value = logo;
 }
 
 async function copyToClipboard(logo) {
   try {
     // Fetch the SVG content from the API
-    const response = await fetch(getLogoUrl(logo.id, null, 'svg'))
-    const svgContent = await response.text()
-    
-    await navigator.clipboard.writeText(svgContent)
-    console.log('SVG copied to clipboard!')
+    const response = await fetch(getLogoUrl(logo.id, null, 'svg'));
+    const svgContent = await response.text();
+
+    await navigator.clipboard.writeText(svgContent);
+    console.log('SVG copied to clipboard!');
     // You could add a toast notification here
   } catch (error) {
-    console.error('Failed to copy SVG:', error)
+    console.error('Failed to copy SVG:', error);
     // Fallback: copy the URL instead
-    await navigator.clipboard.writeText(getLogoUrl(logo.id, null, 'svg'))
+    await navigator.clipboard.writeText(getLogoUrl(logo.id, null, 'svg'));
   }
 }
 
 function handleImageError(event) {
   // Fallback for missing logos - could show a placeholder
-  console.warn('Failed to load logo:', event.target.src)
-  event.target.style.display = 'none'
+  console.warn('Failed to load logo:', event.target.src);
+  event.target.style.display = 'none';
 }
 </script>
 
@@ -575,18 +610,18 @@ function handleImageError(event) {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .logo-grid.grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
-  
+
   .modal-header {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .modal-actions {
     flex-direction: column;
   }
 }
-</style> 
+</style>

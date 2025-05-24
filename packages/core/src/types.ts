@@ -92,11 +92,24 @@ export interface LogoDetailResponse {
   };
 }
 
-export type LogoSize = 16 | 20 | 24 | 32 | 40 | 48 | 56 | 64 | 80 | 96 | 128 | 256 | 512;
+export type LogoSize =
+  | 16
+  | 20
+  | 24
+  | 32
+  | 40
+  | 48
+  | 56
+  | 64
+  | 80
+  | 96
+  | 128
+  | 256
+  | 512;
 
 export interface LogoHubConfig {
   baseUrl?: string;
   apiVersion?: string;
   defaultSize?: LogoSize;
   defaultFormat?: 'svg' | 'png' | 'webp';
-} 
+}

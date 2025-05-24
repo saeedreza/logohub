@@ -47,13 +47,15 @@ const { data: logo } = useLogo('google');
 ## Props
 
 ### Logo
+
 - `name` - Logo ID (required)
 - `format` - 'svg' | 'png' | 'webp' (default: 'svg')
 - `size` - Number (default: 64)
 - `color` - Hex color without #
 
 ### LogoGrid
+
 - `logos` - Array of logo IDs
 - `fetchAll` - Fetch from API
 - `search` - Search term
-- `format`, `size`, `color` - Applied to all logos 
+- `format`, `size`, `color` - Applied to all logos

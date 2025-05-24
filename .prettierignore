@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Generated files
+coverage/
+.nyc_output/
+
+# Cache directories
+.vercel/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Configuration files that shouldn't be formatted
+.editorconfig
+
+# Logs
+*.log
+
+# Environment files
+.env*
+
+# System files
+.DS_Store
+Thumbs.db 

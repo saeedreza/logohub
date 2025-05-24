@@ -2,20 +2,20 @@
  * @fileoverview Image Conversion Utilities for LogoHub
  * @description Comprehensive image conversion toolkit for converting SVG logos to PNG and WebP formats
  * with multiple standard sizes while preserving aspect ratios and transparency.
- * 
+ *
  * @category Processing
  * @requires sharp
  * @requires fs/promises
  * @requires path
  * @version 1.0.0
  * @author LogoHub Team
- * 
+ *
  * @example
  * const { convertSvgToPng, generateAllVariants } = require('./processing/image-converter.js');
- * 
+ *
  * // Convert single SVG to PNG
  * await convertSvgToPng('logo.svg', 'logo-64.png', 64);
- * 
+ *
  * // Generate all standard size variants
  * const variants = await generateAllVariants('logo.svg', './output', 'logo');
  */
@@ -39,7 +39,7 @@ const STANDARD_SIZES = [16, 32, 64, 128, 256, 512];
  * @param {number} size - Maximum size in pixels (width or height)
  * @returns {Promise<void>}
  * @throws {Error} If conversion fails
- * 
+ *
  * @example
  * await convertSvgToPng('./logos/company.svg', './output/company-64.png', 64);
  */
@@ -49,7 +49,7 @@ async function convertSvgToPng(svgPath, outputPath, size) {
       .resize(size, size, {
         fit: 'inside',
         withoutEnlargement: false,
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
       })
       .png()
       .toFile(outputPath);
@@ -67,7 +67,7 @@ async function convertSvgToPng(svgPath, outputPath, size) {
  * @param {number} size - Maximum size in pixels (width or height)
  * @returns {Promise<void>}
  * @throws {Error} If conversion fails
- * 
+ *
  * @example
  * await convertSvgToWebp('./logos/company.svg', './output/company-64.webp', 64);
  */
@@ -77,7 +77,7 @@ async function convertSvgToWebp(svgPath, outputPath, size) {
       .resize(size, size, {
         fit: 'inside',
         withoutEnlargement: false,
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
       })
       .webp({ quality: 90 })
       .toFile(outputPath);
@@ -94,7 +94,7 @@ async function convertSvgToWebp(svgPath, outputPath, size) {
  * @param {number} size - Maximum size in pixels (width or height)
  * @returns {Promise<Buffer>} PNG buffer
  * @throws {Error} If conversion fails
- * 
+ *
  * @example
  * const svgBuffer = fs.readFileSync('logo.svg');
  * const pngBuffer = await convertSvgBufferToPng(svgBuffer, 64);
@@ -105,7 +105,7 @@ async function convertSvgBufferToPng(svgBuffer, size) {
       .resize(size, size, {
         fit: 'inside',
         withoutEnlargement: false,
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
       })
       .png()
       .toBuffer();
@@ -122,7 +122,7 @@ async function convertSvgBufferToPng(svgBuffer, size) {
  * @param {number} size - Maximum size in pixels (width or height)
  * @returns {Promise<Buffer>} WebP buffer
  * @throws {Error} If conversion fails
- * 
+ *
  * @example
  * const svgBuffer = fs.readFileSync('logo.svg');
  * const webpBuffer = await convertSvgBufferToWebp(svgBuffer, 64);
@@ -133,7 +133,7 @@ async function convertSvgBufferToWebp(svgBuffer, size) {
       .resize(size, size, {
         fit: 'inside',
         withoutEnlargement: false,
-        background: { r: 0, g: 0, b: 0, alpha: 0 }
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
       })
       .webp({ quality: 90 })
       .toBuffer();
@@ -151,7 +151,7 @@ async function convertSvgBufferToWebp(svgBuffer, size) {
  * @param {string} baseName - Base name for the files (without extension)
  * @returns {Promise<Object>} Object with generated file info containing png and webp arrays
  * @throws {Error} If variant generation fails
- * 
+ *
  * @example
  * const variants = await generateAllVariants('./logo.svg', './output', 'company-logo');
  * console.log(`Generated ${variants.png.length} PNG and ${variants.webp.length} WebP variants`);
@@ -159,7 +159,7 @@ async function convertSvgBufferToWebp(svgBuffer, size) {
 async function generateAllVariants(svgPath, outputDir, baseName) {
   const variants = {
     png: [],
-    webp: []
+    webp: [],
   };
 
   // Ensure output directory exists
@@ -173,7 +173,7 @@ async function generateAllVariants(svgPath, outputDir, baseName) {
       size,
       maxDimension: size,
       path: pngPath,
-      filename: `${baseName}-${size}.png`
+      filename: `${baseName}-${size}.png`,
     });
   }
 
@@ -185,7 +185,7 @@ async function generateAllVariants(svgPath, outputDir, baseName) {
       size,
       maxDimension: size,
       path: webpPath,
-      filename: `${baseName}-${size}.webp`
+      filename: `${baseName}-${size}.webp`,
     });
   }
 
@@ -197,7 +197,7 @@ async function generateAllVariants(svgPath, outputDir, baseName) {
  * @function parseSizeFromFilename
  * @param {string} filename - Filename to parse
  * @returns {number|null} Size in pixels or null if not found
- * 
+ *
  * @example
  * const size = parseSizeFromFilename('company-logo-128.png'); // Returns 128
  * const invalid = parseSizeFromFilename('logo.svg'); // Returns null
@@ -212,7 +212,7 @@ function parseSizeFromFilename(filename) {
  * @function isValidSize
  * @param {number} size - Size to validate
  * @returns {boolean} True if size is valid (positive integer <= 2048)
- * 
+ *
  * @example
  * isValidSize(64);   // true
  * isValidSize(3000); // false (too large)
@@ -229,7 +229,7 @@ function isValidSize(size) {
  * @param {string} targetColor - Color to replace colors with (hex format)
  * @param {boolean} [monochrome=false] - Whether to make it monochrome
  * @returns {string} Modified SVG content
- * 
+ *
  * @example
  * const originalSvg = '<svg><path fill="#4285F4">...</path></svg>';
  * const monoSvg = replaceColorsInSvg(originalSvg, '#000000', true);
@@ -244,17 +244,20 @@ function replaceColorsInSvg(svgContent, targetColor, monochrome = false) {
     // For now, replace common Google colors
     const colorMap = {
       '#4285F4': targetColor, // Google Blue -> target
-      '#EA4335': targetColor, // Google Red -> target  
+      '#EA4335': targetColor, // Google Red -> target
       '#FBBC05': targetColor, // Google Yellow -> target
-      '#34A853': targetColor  // Google Green -> target
+      '#34A853': targetColor, // Google Green -> target
     };
-    
+
     let modifiedSvg = svgContent;
     Object.entries(colorMap).forEach(([oldColor, newColor]) => {
-      const regex = new RegExp(oldColor.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      const regex = new RegExp(
+        oldColor.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+        'gi'
+      );
       modifiedSvg = modifiedSvg.replace(regex, newColor);
     });
-    
+
     return modifiedSvg;
   }
 }
@@ -268,5 +271,5 @@ module.exports = {
   parseSizeFromFilename,
   isValidSize,
   replaceColorsInSvg,
-  STANDARD_SIZES
-}; 
+  STANDARD_SIZES,
+};

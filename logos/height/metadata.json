@@ -2,9 +2,7 @@
   "name": "height",
   "title": "Height",
   "website": "https://height.app",
-  "colors": [
-    "#666666"
-  ],
+  "colors": ["#666666"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-23T06:15:51.728Z",

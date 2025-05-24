@@ -26,14 +26,14 @@ const url = client.getLogoUrl({
   id: 'google',
   format: 'png',
   size: 128,
-  color: 'ff0000'
+  color: 'ff0000',
 });
 ```
 
 ## API
 
 - `getLogos(params)` - List logos with search/filter
-- `getLogo(id)` - Get logo details  
+- `getLogo(id)` - Get logo details
 - `getLogoUrl(config)` - Generate logo URL
 - `downloadLogo(config)` - Download as blob
 - `logoExists(id)` - Check if logo exists
@@ -44,4 +44,4 @@ MIT - See [LICENSE](../../LICENSE) for details.
 
 ## Contributing
 
-See [CONTRIBUTING.md](../../guidelines/CONTRIBUTING.md) for contribution guidelines. 
+See [CONTRIBUTING.md](../../guidelines/CONTRIBUTING.md) for contribution guidelines.

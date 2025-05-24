@@ -32,4 +32,4 @@ export {
   formatLogoId,
   isValidLogoSize,
   getClosestLogoSize,
-} from '@logohub/core'; 
+} from '@logohub/core';

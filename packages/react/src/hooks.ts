@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
-import type { 
-  LogoHubClient, 
-  LogoListResponse, 
+import type {
+  LogoHubClient,
+  LogoListResponse,
   LogoDetailResponse,
   LogoConfig,
-  LogoHubConfig 
+  LogoHubConfig,
 } from '@logohub/core';
 import { LogoHubClient as Client } from '@logohub/core';
 
@@ -15,7 +15,7 @@ export function useLogoHubClient(config?: LogoHubConfig): LogoHubClient {
 
 // Hook for fetching all logos
 export function useLogos(
-  client?: LogoHubClient, 
+  client?: LogoHubClient,
   params: {
     page?: number;
     limit?: number;
@@ -25,7 +25,7 @@ export function useLogos(
 ) {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
-  
+
   const [data, setData] = useState<LogoListResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -38,13 +38,15 @@ export function useLogos(
         setLoading(true);
         setError(null);
         const response = await logoClient.getLogos(params);
-        
+
         if (!cancelled) {
           setData(response);
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err : new Error('Failed to fetch logos'));
+          setError(
+            err instanceof Error ? err : new Error('Failed to fetch logos')
+          );
         }
       } finally {
         if (!cancelled) {
@@ -58,14 +60,20 @@ export function useLogos(
     return () => {
       cancelled = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [logoClient, params.page, params.limit, params.format, params.search]);
 
   const refetch = () => {
     setLoading(true);
     setError(null);
-    logoClient.getLogos(params)
+    logoClient
+      .getLogos(params)
       .then(setData)
-      .catch((err) => setError(err instanceof Error ? err : new Error('Failed to fetch logos')))
+      .catch(err =>
+        setError(
+          err instanceof Error ? err : new Error('Failed to fetch logos')
+        )
+      )
       .finally(() => setLoading(false));
   };
 
@@ -81,7 +89,7 @@ export function useLogos(
 export function useLogo(logoId: string, client?: LogoHubClient) {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
-  
+
   const [data, setData] = useState<LogoDetailResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -101,13 +109,17 @@ export function useLogo(logoId: string, client?: LogoHubClient) {
         setLoading(true);
         setError(null);
         const response = await logoClient.getLogo(logoId);
-        
+
         if (!cancelled) {
           setData(response);
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err : new Error(`Failed to fetch logo "${logoId}"`));
+          setError(
+            err instanceof Error
+              ? err
+              : new Error(`Failed to fetch logo "${logoId}"`)
+          );
         }
       } finally {
         if (!cancelled) {
@@ -125,12 +137,19 @@ export function useLogo(logoId: string, client?: LogoHubClient) {
 
   const refetch = () => {
     if (!logoId) return;
-    
+
     setLoading(true);
     setError(null);
-    logoClient.getLogo(logoId)
+    logoClient
+      .getLogo(logoId)
       .then(setData)
-      .catch((err) => setError(err instanceof Error ? err : new Error(`Failed to fetch logo "${logoId}"`)))
+      .catch(err =>
+        setError(
+          err instanceof Error
+            ? err
+            : new Error(`Failed to fetch logo "${logoId}"`)
+        )
+      )
       .finally(() => setLoading(false));
   };
 
@@ -146,7 +165,7 @@ export function useLogo(logoId: string, client?: LogoHubClient) {
 export function useLogoUrl(config: LogoConfig, client?: LogoHubClient): string {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
-  
+
   return useMemo(() => {
     return logoClient.getLogoUrl(config);
   }, [logoClient, config]);
@@ -156,7 +175,7 @@ export function useLogoUrl(config: LogoConfig, client?: LogoHubClient): string {
 export function useLogoDataUrl(config: LogoConfig, client?: LogoHubClient) {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
-  
+
   const [dataUrl, setDataUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -168,7 +187,9 @@ export function useLogoDataUrl(config: LogoConfig, client?: LogoHubClient) {
       const url = await logoClient.getLogoDataUrl(config);
       setDataUrl(url);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to download logo'));
+      setError(
+        err instanceof Error ? err : new Error('Failed to download logo')
+      );
     } finally {
       setLoading(false);
     }
@@ -192,7 +213,7 @@ export function useLogoDataUrl(config: LogoConfig, client?: LogoHubClient) {
 export function useLogoExists(logoId: string, client?: LogoHubClient) {
   const defaultClient = useLogoHubClient();
   const logoClient = client || defaultClient;
-  
+
   const [exists, setExists] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -212,13 +233,17 @@ export function useLogoExists(logoId: string, client?: LogoHubClient) {
         setLoading(true);
         setError(null);
         const logoExists = await logoClient.logoExists(logoId);
-        
+
         if (!cancelled) {
           setExists(logoExists);
         }
       } catch (err) {
         if (!cancelled) {
-          setError(err instanceof Error ? err : new Error(`Failed to check if logo "${logoId}" exists`));
+          setError(
+            err instanceof Error
+              ? err
+              : new Error(`Failed to check if logo "${logoId}" exists`)
+          );
           setExists(false);
         }
       } finally {
@@ -240,4 +265,4 @@ export function useLogoExists(logoId: string, client?: LogoHubClient) {
     loading,
     error,
   };
-} 
+}

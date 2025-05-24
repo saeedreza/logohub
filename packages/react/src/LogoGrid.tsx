@@ -60,10 +60,16 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
   renderLogo,
 }) => {
   // Fetch all logos if no specific logos provided and fetchAll is true
-  const { data: logoData, loading, error } = useLogos(
-    fetchAll && !logos ? client : undefined,
-    { page, limit, format, search }
-  );
+  const {
+    data: logoData,
+    loading,
+    error,
+  } = useLogos(fetchAll && !logos ? client : undefined, {
+    page,
+    limit,
+    format,
+    search,
+  });
 
   // Determine which logos to display
   const displayLogos = logos || (logoData?.logos.map(logo => logo.id) ?? []);
@@ -97,25 +103,23 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
 
   const gridStyle: React.CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: typeof columns === 'number' 
-      ? `repeat(${columns}, 1fr)` 
-      : typeof columns === 'string' 
-        ? columns === 'auto' 
-          ? `repeat(auto-fill, minmax(${size + 32}px, 1fr))`
-          : columns
-        : `repeat(auto-fill, minmax(${size + 32}px, 1fr))`,
+    gridTemplateColumns:
+      typeof columns === 'number'
+        ? `repeat(${columns}, 1fr)`
+        : typeof columns === 'string'
+          ? columns === 'auto'
+            ? `repeat(auto-fill, minmax(${size + 32}px, 1fr))`
+            : columns
+          : `repeat(auto-fill, minmax(${size + 32}px, 1fr))`,
     gap,
     ...style,
   };
 
   return (
-    <div 
-      className={`logohub-grid ${className}`} 
-      style={gridStyle}
-    >
+    <div className={`logohub-grid ${className}`} style={gridStyle}>
       {displayLogos.map((logoName, index) => (
-        <div 
-          key={logoName} 
+        <div
+          key={logoName}
           className="logohub-grid-item"
           style={{
             display: 'flex',
@@ -136,7 +140,7 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
                 client={client}
                 {...logoProps}
               />
-              <span 
+              <span
                 style={{
                   fontSize: '12px',
                   color: '#6b7280',
@@ -152,4 +156,4 @@ export const LogoGrid: React.FC<LogoGridProps> = ({
       ))}
     </div>
   );
-}; 
+};

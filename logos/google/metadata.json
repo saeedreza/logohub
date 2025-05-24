@@ -2,10 +2,7 @@
   "name": "google",
   "title": "Google",
   "website": "https://google.com",
-  "colors": [
-    "#4285F4",
-    "#34A853"
-  ],
+  "colors": ["#4285F4", "#34A853"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

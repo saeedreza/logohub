@@ -2,10 +2,7 @@
   "name": "kubernetes",
   "title": "Kubernetes",
   "website": "https://kubernetes.com",
-  "colors": [
-    "#326DE6",
-    "#FFFFFF"
-  ],
+  "colors": ["#326DE6", "#FFFFFF"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

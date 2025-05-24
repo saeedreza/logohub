@@ -2,10 +2,7 @@
   "name": "microsoft",
   "title": "Microsoft",
   "website": "https://microsoft.com",
-  "colors": [
-    "#F1511B",
-    "#00ADEF"
-  ],
+  "colors": ["#F1511B", "#00ADEF"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

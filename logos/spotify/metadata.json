@@ -2,10 +2,7 @@
   "name": "spotify",
   "title": "Spotify",
   "website": "https://spotify.com",
-  "colors": [
-    "#1ED760",
-    "#000000"
-  ],
+  "colors": ["#1ED760", "#000000"],
   "hasSymbol": false,
   "license": "Please check company's brand guidelines",
   "created": "2025-05-22",

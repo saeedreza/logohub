@@ -8,4 +8,4 @@ description: Browse our collection of high-quality SVG logos
 import LogoGrid from './.vitepress/components/LogoGrid.vue'
 </script>
 
-<LogoGrid /> 
+<LogoGrid />

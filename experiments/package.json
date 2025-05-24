@@ -1,0 +1,17 @@
+{
+  "name": "logo-scraper-experiment",
+  "version": "0.1.0",
+  "description": "Experimental tool for automated logo collection",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test-scraper.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.5.0",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0",
+    "fs-extra": "^11.1.1"
+  },
+  "type": "module"
+}
