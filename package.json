@@ -5,6 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "build": "npm run website:build",
+    "vercel-build": "npm run website:build",
     "start": "node api/index.js",
     "test": "jest",
     "build:core": "cd packages/core && npm run build",
