@@ -1,0 +1,66 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# LogoHub Project Rules
+
+## Documentation Standards
+
+### README Files - MINIMAL ONLY
+- Keep ALL README files absolutely minimal and to the point
+- Include only: Install, Basic Usage, Essential Props/API
+- NO lengthy explanations
+- NO feature lists or marketing content
+- Focus on immediate practical usage only
+
+### API Documentation
+- Keep API docs concise and functional
+- List endpoints, parameters, and response format only
+- NO verbose descriptions or use cases
+- Use simple examples without extensive explanations
+
+## Code Standards
+
+### New File Creation
+- ALWAYS add file description comment at the top
+- Include purpose, main functionality, and usage context
+- Add JSDoc comments for all functions, classes, and interfaces
+- Comment complex logic and business rules
+- Explain non-obvious implementation decisions
+
+### Comment Requirements
+```typescript
+/**
+ * Brief file description - what this file does
+ * 
+ * Main functionality overview and when to use it
+ */
+
+/**
+ * Function description - what it does and why
+ * @param param - description of parameter
+ * @returns description of return value
+ */
+```
+
+## Project-Specific Rules
+
+### LogoHub Context
+- This is a logo repository API with React/TypeScript packages
+- API serves many brand logos in SVG/PNG/WebP formats
+- Focus on performance and simplicity
+- Maintain backward compatibility when possible
+
+### Package Development
+- Update package versions for breaking changes
+- Keep exports minimal and focused
+- Test build process before publishing
+- Maintain consistency between core and other packages
+
+## General Guidelines
+- Prioritize functionality over documentation length
+- Use TypeScript types as primary documentation
+- Keep dependencies minimal
+- Follow semantic versioning
+- Always build and test before committing
