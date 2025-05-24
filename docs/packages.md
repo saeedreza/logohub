@@ -6,7 +6,7 @@
 
 Core TypeScript client for LogoHub API. Provides essential functionality for fetching and working with brand logos.
 
-[Guide](/guide/core) • [NPM](https://www.npmjs.com/package/@logohub/core) • [Source](https://github.com/saeedreza/logohub/tree/main/packages/core)
+[NPM](https://www.npmjs.com/package/@logohub/core) • [Source](https://github.com/saeedreza/logohub/tree/main/packages/core)
 
 ## @logohub/react
 
@@ -14,7 +14,7 @@ Core TypeScript client for LogoHub API. Provides essential functionality for fet
 
 React components and hooks for LogoHub. Includes `<Logo>` component, `<LogoGrid>` component, and helpful hooks for React applications.
 
-[Guide](/guide/react) • [NPM](https://www.npmjs.com/package/@logohub/react) • [Source](https://github.com/saeedreza/logohub/tree/main/packages/react)
+[NPM](https://www.npmjs.com/package/@logohub/react) • [Source](https://github.com/saeedreza/logohub/tree/main/packages/react)
 
 ## Installation
 
