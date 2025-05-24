@@ -13,6 +13,7 @@ export default {
     nav: [
       { text: 'Logos', link: '/logos' },
       { text: 'API', link: '/api' },
+      { text: 'Packages', link: '/packages' },
       { text: 'Guide', link: '/guide' },
       { text: 'GitHub', link: 'https://github.com/saeedreza/logohub' }
     ],
